@@ -22,7 +22,7 @@ module.exports = React.createClass({
 				firstName: null,
 				fullName: null,
 				githubUsername: null,
-				gradYear: null,
+				gradTerm: null,
 				home: null,
 				isMale: 1,
 				lastName: null,

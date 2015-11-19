@@ -10,7 +10,7 @@ var people = {
 	'firstName': String,
 	'fullName': String,
 	'githubUsername': String,
-	'gradTerm': Number,
+	'gradTerm': String,
 	'home': String,
 	'isMale': Boolean,
 	'skills': [],
