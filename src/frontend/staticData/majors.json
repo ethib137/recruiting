@@ -1,0 +1,698 @@
+[
+  {
+    "label": "GENERAL AGRICULTURE",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "AGRICULTURE PRODUCTION AND MANAGEMENT",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "AGRICULTURAL ECONOMICS",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "ANIMAL SCIENCES",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "FOOD SCIENCE",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "PLANT SCIENCE AND AGRONOMY",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "SOIL SCIENCE",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "MISCELLANEOUS AGRICULTURE",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "FORESTRY",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "NATURAL RESOURCES MANAGEMENT",
+    "Major_Category": "Agriculture & Natural Resources"
+  },
+  {
+    "label": "FINE ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "DRAMA AND THEATER ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "MUSIC",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "VISUAL AND PERFORMING ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "COMMERCIAL ART AND GRAPHIC DESIGN",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "FILM VIDEO AND PHOTOGRAPHIC ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "STUDIO ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "MISCELLANEOUS FINE ARTS",
+    "Major_Category": "Arts"
+  },
+  {
+    "label": "ENVIRONMENTAL SCIENCE",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "BIOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "BIOCHEMICAL SCIENCES",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "BOTANY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "MOLECULAR BIOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "ECOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "GENETICS",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "MICROBIOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "PHARMACOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "PHYSIOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "ZOOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "NEUROSCIENCE",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "MISCELLANEOUS BIOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "COGNITIVE SCIENCE AND BIOPSYCHOLOGY",
+    "Major_Category": "Biology & Life Science"
+  },
+  {
+    "label": "GENERAL BUSINESS",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "ACCOUNTING",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "ACTUARIAL SCIENCE",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "BUSINESS MANAGEMENT AND ADMINISTRATION",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "OPERATIONS LOGISTICS AND E-COMMERCE",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "BUSINESS ECONOMICS",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "MARKETING AND MARKETING RESEARCH",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "FINANCE",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "HUMAN RESOURCES AND PERSONNEL MANAGEMENT",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "INTERNATIONAL BUSINESS",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "HOSPITALITY MANAGEMENT",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "MANAGEMENT INFORMATION SYSTEMS AND STATISTICS",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "MISCELLANEOUS BUSINESS & MEDICAL ADMINISTRATION",
+    "Major_Category": "Business"
+  },
+  {
+    "label": "COMMUNICATIONS",
+    "Major_Category": "Communications & Journalism"
+  },
+  {
+    "label": "JOURNALISM",
+    "Major_Category": "Communications & Journalism"
+  },
+  {
+    "label": "MASS MEDIA",
+    "Major_Category": "Communications & Journalism"
+  },
+  {
+    "label": "ADVERTISING AND PUBLIC RELATIONS",
+    "Major_Category": "Communications & Journalism"
+  },
+  {
+    "label": "COMMUNICATION TECHNOLOGIES",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "COMPUTER AND INFORMATION SYSTEMS",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "COMPUTER PROGRAMMING AND DATA PROCESSING",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "COMPUTER SCIENCE",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "INFORMATION SCIENCES",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "COMPUTER ADMINISTRATION MANAGEMENT AND SECURITY",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "COMPUTER NETWORKING AND TELECOMMUNICATIONS",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "MATHEMATICS",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "APPLIED MATHEMATICS",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "STATISTICS AND DECISION SCIENCE",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "MATHEMATICS AND COMPUTER SCIENCE",
+    "Major_Category": "Computers & Mathematics"
+  },
+  {
+    "label": "GENERAL EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "EDUCATIONAL ADMINISTRATION AND SUPERVISION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "SCHOOL STUDENT COUNSELING",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "ELEMENTARY EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "MATHEMATICS TEACHER EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "PHYSICAL AND HEALTH EDUCATION TEACHING",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "EARLY CHILDHOOD EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "SCIENCE AND COMPUTER TEACHER EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "SECONDARY TEACHER EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "SPECIAL NEEDS EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "SOCIAL SCIENCE OR HISTORY TEACHER EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "TEACHER EDUCATION: MULTIPLE LEVELS",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "LANGUAGE AND DRAMA EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "ART AND MUSIC EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "MISCELLANEOUS EDUCATION",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "LIBRARY SCIENCE",
+    "Major_Category": "Education"
+  },
+  {
+    "label": "ARCHITECTURE",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "GENERAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "AEROSPACE ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "BIOLOGICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ARCHITECTURAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "BIOMEDICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "CHEMICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "CIVIL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "COMPUTER ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ELECTRICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ENGINEERING MECHANICS PHYSICS AND SCIENCE",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ENVIRONMENTAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "GEOLOGICAL AND GEOPHYSICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "INDUSTRIAL AND MANUFACTURING ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MATERIALS ENGINEERING AND MATERIALS SCIENCE",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MECHANICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "METALLURGICAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MINING AND MINERAL ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "NAVAL ARCHITECTURE AND MARINE ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "NUCLEAR ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "PETROLEUM ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MISCELLANEOUS ENGINEERING",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ENGINEERING TECHNOLOGIES",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ENGINEERING AND INDUSTRIAL MANAGEMENT",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "ELECTRICAL ENGINEERING TECHNOLOGY",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "INDUSTRIAL PRODUCTION TECHNOLOGIES",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MECHANICAL ENGINEERING RELATED TECHNOLOGIES",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MISCELLANEOUS ENGINEERING TECHNOLOGIES",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "MATERIALS SCIENCE",
+    "Major_Category": "Engineering"
+  },
+  {
+    "label": "NUTRITION SCIENCES",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "GENERAL MEDICAL AND HEALTH SERVICES",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "COMMUNICATION DISORDERS SCIENCES AND SERVICES",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "HEALTH AND MEDICAL ADMINISTRATIVE SERVICES",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "MEDICAL ASSISTING SERVICES",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "MEDICAL TECHNOLOGIES TECHNICIANS",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "HEALTH AND MEDICAL PREPARATORY PROGRAMS",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "NURSING",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "PHARMACY PHARMACEUTICAL SCIENCES AND ADMINISTRATION",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "TREATMENT THERAPY PROFESSIONS",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "COMMUNITY AND PUBLIC HEALTH",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "MISCELLANEOUS HEALTH MEDICAL PROFESSIONS",
+    "Major_Category": "Health"
+  },
+  {
+    "label": "AREA ETHNIC AND CIVILIZATION STUDIES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "LINGUISTICS AND COMPARATIVE LANGUAGE AND LITERATURE",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "FRENCH GERMAN LATIN AND OTHER COMMON FOREIGN LANGUAGE STUDIES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "OTHER FOREIGN LANGUAGES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "ENGLISH LANGUAGE AND LITERATURE",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "COMPOSITION AND RHETORIC",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "LIBERAL ARTS",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "HUMANITIES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "INTERCULTURAL AND INTERNATIONAL STUDIES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "PHILOSOPHY AND RELIGIOUS STUDIES",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "THEOLOGY AND RELIGIOUS VOCATIONS",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "ANTHROPOLOGY AND ARCHEOLOGY",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "ART HISTORY AND CRITICISM",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "HISTORY",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "UNITED STATES HISTORY",
+    "Major_Category": "Humanities & Liberal Arts"
+  },
+  {
+    "label": "COSMETOLOGY SERVICES AND CULINARY ARTS",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "FAMILY AND CONSUMER SCIENCES",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "MILITARY TECHNOLOGIES",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "PHYSICAL FITNESS PARKS RECREATION AND LEISURE",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "CONSTRUCTION SERVICES",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "ELECTRICAL, MECHANICAL, AND PRECISION TECHNOLOGIES AND PRODUCTION",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "TRANSPORTATION SCIENCES AND TECHNOLOGIES",
+    "Major_Category": "Industrial Arts & Consumer Services"
+  },
+  {
+    "label": "MULTI/INTERDISCIPLINARY STUDIES",
+    "Major_Category": "Interdisciplinary"
+  },
+  {
+    "label": "COURT REPORTING",
+    "Major_Category": "Law & Public Policy"
+  },
+  {
+    "label": "PRE-LAW AND LEGAL STUDIES",
+    "Major_Category": "Law & Public Policy"
+  },
+  {
+    "label": "CRIMINAL JUSTICE AND FIRE PROTECTION",
+    "Major_Category": "Law & Public Policy"
+  },
+  {
+    "label": "PUBLIC ADMINISTRATION",
+    "Major_Category": "Law & Public Policy"
+  },
+  {
+    "label": "PUBLIC POLICY",
+    "Major_Category": "Law & Public Policy"
+  },
+  {
+    "label": "N/A (less than bachelor's degree)",
+    "Major_Category": "NA"
+  },
+  {
+    "label": "PHYSICAL SCIENCES",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "ASTRONOMY AND ASTROPHYSICS",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "ATMOSPHERIC SCIENCES AND METEOROLOGY",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "CHEMISTRY",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "GEOLOGY AND EARTH SCIENCE",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "GEOSCIENCES",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "OCEANOGRAPHY",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "PHYSICS",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "MULTI-DISCIPLINARY OR GENERAL SCIENCE",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "NUCLEAR, INDUSTRIAL RADIOLOGY, AND BIOLOGICAL TECHNOLOGIES",
+    "Major_Category": "Physical Sciences"
+  },
+  {
+    "label": "PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "EDUCATIONAL PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "CLINICAL PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "COUNSELING PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "INDUSTRIAL AND ORGANIZATIONAL PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "SOCIAL PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "MISCELLANEOUS PSYCHOLOGY",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "HUMAN SERVICES AND COMMUNITY ORGANIZATION",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "SOCIAL WORK",
+    "Major_Category": "Psychology & Social Work"
+  },
+  {
+    "label": "INTERDISCIPLINARY SOCIAL SCIENCES",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "GENERAL SOCIAL SCIENCES",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "ECONOMICS",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "CRIMINOLOGY",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "GEOGRAPHY",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "INTERNATIONAL RELATIONS",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "POLITICAL SCIENCE AND GOVERNMENT",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "SOCIOLOGY",
+    "Major_Category": "Social Science"
+  },
+  {
+    "label": "MISCELLANEOUS SOCIAL SCIENCES",
+    "Major_Category": "Social Science"
+  }
+]
