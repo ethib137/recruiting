@@ -27,3 +27,5 @@ gulp.task('watch', function() {
 gulp.task('start', function() {
 	server.run(['dist/server/server.js']);
 });
+
+gulp.task('dev', ['start', 'watch']);

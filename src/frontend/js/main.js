@@ -1,12 +1,17 @@
 /** @jsx React.DOM */
 var React = require('react');
+var Router = require('react-router').Router
+var Route = require('react-router').Route
 
-// Not ideal to use createFactory, but don't know how to use JSX to solve this
-// Posted question at: https://gist.github.com/sebmarkbage/ae327f2eda03bf165261
 var Form = require('./components/recruit-form.js');
+var Admin = require('./components/admin.js');
 
 React.render(
-	<Form />,
-
+	(
+		<Router>
+			<Route path="/form" component={Form}/>
+			<Route path="/admin" component={Admin}/>
+		</Router>
+	),
 	document.getElementById('mainContent')
 );
