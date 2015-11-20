@@ -17,7 +17,7 @@ var people = {
 	'lastName': String,
 	'missionsLocation': String,
 	'profilePicture': String,
-	'rating': 0,
+	'rating': String,
 	'school': String
 };
 

@@ -57,15 +57,38 @@ module.exports = React.createClass({
 				{
 				instance.state.recruits.map(
 					function(recruit) {
-						if (typeof recruit.rating == 'undefined' || instance.state.showAll) {
+						if (recruit.rating == 0 || instance.state.showAll) {
+							var buttonRow = null;
+
+							if (!instance.state.showAll) {
+								buttonRow = (
+									<div className="text-center">
+										<br />
+										<button data-id={recruit._id} value="-" onClick={instance.handleRecruitRating} type="button" className="pull-left btn btn-secondary">-</button>
+										<button data-id={recruit._id} value="+" onClick={instance.handleRecruitRating} type="button" className="text-center btn btn-secondary">+</button>
+										<button data-id={recruit._id} value="++" onClick={instance.handleRecruitRating} type="button" className="pull-right btn btn-secondary">++</button>
+									</div>
+								);
+							}
+
 							return (
 								<div className="card" key={recruit._id}>
 									<img className="card-img-top" src={recruit.profilePicture} />
-									<div className="card-block text-center">
-										<h4 className="card-title">{recruit.firstName} {recruit.lastName}</h4>
-										<button data-id={recruit._id} value="2" onClick={instance.handleRecruitRating} type="button" className="pull-left btn btn-secondary">++</button>
-										<button data-id={recruit._id} value="1" onClick={instance.handleRecruitRating} type="button" className="text-center btn btn-secondary">+</button>
-										<button data-id={recruit._id} value="-1" onClick={instance.handleRecruitRating} type="button" className="pull-right btn btn-secondary">-</button>
+									<div className="card-block">
+										<h4 className="card-title text-center">{recruit.fullName}</h4>
+
+										<div>
+											School: <span>{recruit.school}</span>
+										</div>
+
+										<div>
+											Major: <span>{recruit.fieldOfStudy}</span>
+										</div>
+
+										<div>
+											<span>{recruit.rating}</span>
+										</div>
+										{buttonRow}
 									</div>
 								</div>
 							);
