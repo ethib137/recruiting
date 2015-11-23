@@ -78,6 +78,8 @@ module.exports = React.createClass({
 			}
 		);
 
+		console.log(recruit.skills);
+
 		this.setState({recruit: recruit});
 	},
 

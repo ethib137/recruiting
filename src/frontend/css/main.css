@@ -18,3 +18,37 @@ body {
 .card-img-top {
 	width: 100%;
 }
+
+.skill-pill {
+	border-radius: 12px;
+	border: 1px solid;
+	display: inline-block;
+	margin-right: 8px;
+	padding: 0 4px;
+}
+
+.skill-pill .close {
+	border-left: 1px solid;
+	float: none;
+	padding: 0 2px;
+	vertical-align: top;
+}
+
+.skill-pill .close > span {
+	pointer-events: none;
+}
+
+.skill-pill > span {
+	max-width: 150px;
+	padding: 0 4px;
+	vertical-align: middle;
+}
+
+.skills-input {
+	border-width: 0;
+	width: auto;
+}
+
+.skills-input:focus {
+	outline-width: 0;
+}

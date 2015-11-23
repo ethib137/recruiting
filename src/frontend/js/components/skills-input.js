@@ -92,20 +92,25 @@ module.exports = React.createClass({
 
 		return (
 			<fieldset className="form-group">
-				<label for="skillsInput">Know any sweet languages?</label>
+				<label for="skillsInput">Know any sweet skills or languages?</label>
+				<div className="form-control">
 				{
 					recruit.skills.map(
 						function(skill) {
 							return (
-								<span>
+								<span className="skill-pill">
 									{skill.label}
-									<span data-id={skill._id} onClick={instance.props.parent.removeSkill}>x</span>
+									<button data-id={skill._id} onClick={instance.props.parent.removeSkill} type="button" className="close">
+										<span aria-hidden="true">&times;</span>
+										<span className="sr-only">Close</span>
+									</button>
 								</span>
 							);
 						}
 					)
 				}
-				<input ref="skills" type="text" className="form-control" placeholder="Aramaic, Java, Klingon, etc" />
+				<input ref="skills" type="text" className="skills-input" placeholder="Aramaic, Java, Klingon, etc" />
+				</div>
 			</fieldset>
 		);
 	}
