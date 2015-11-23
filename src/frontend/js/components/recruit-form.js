@@ -107,11 +107,15 @@ module.exports = React.createClass({
 			url: '/api/recruits'
 		}
 
+		var successURL = '/success';
+
 		if (this.state.edit) {
 			config = {
 				type: 'PUT',
 				url: '/api/recruits/' + this.state.recruit._id
 			}
+
+			successURL = '/admin';
 		}
 
 		$.ajax(
@@ -120,7 +124,7 @@ module.exports = React.createClass({
 				{
 					data: JSON.stringify(this.state.recruit),
 					success: function(response){
-						instance.history.pushState(null, '/success');
+						instance.history.pushState(null, successURL);
 					},
 					dataType: 'json',
 					contentType : 'application/json'

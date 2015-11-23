@@ -8,7 +8,7 @@ module.exports = React.createClass({
 	getInitialState: function() {
 		return {
 			recruits: [],
-			showAll: true
+			showAll: false
 		};
 	},
 
@@ -47,11 +47,11 @@ module.exports = React.createClass({
 			<div ref="recruitsContainer" className="recruits-container">
 				<nav className="navbar navbar-light bg-faded">
 					<ul className="nav navbar-nav">
-						<li className={instance.state.showAll ? 'active nav-item ' : 'nav-item '}>
-							<a onClick={this.handleAllTab} className="nav-link"><span>All</span></a>
-						</li>
 						<li className={instance.state.showAll ? 'nav-item ' : 'active nav-item'}>
 							<a onClick={this.handleNewTab} className="nav-link"><span>New</span></a>
+						</li>
+						<li className={instance.state.showAll ? 'active nav-item ' : 'nav-item '}>
+							<a onClick={this.handleAllTab} className="nav-link"><span>All</span></a>
 						</li>
 					</ul>
 
