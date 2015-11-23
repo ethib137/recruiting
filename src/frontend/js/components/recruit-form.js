@@ -8,7 +8,11 @@ var GradTermInput = require('./grad-date');
 var SkillsInput = require('./skills-input');
 var VideoInput = require('./photobooth');
 
+var History = require('react-router').History;
+
 module.exports = React.createClass({
+	mixins: [History],
+
 	getInitialState: function() {
 		return {
 			autoplay: true,
@@ -116,7 +120,7 @@ module.exports = React.createClass({
 				{
 					data: JSON.stringify(this.state.recruit),
 					success: function(response){
-						console.log('Success!', response);
+						instance.history.pushState(null, '/success');
 					},
 					dataType: 'json',
 					contentType : 'application/json'

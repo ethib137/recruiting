@@ -5,13 +5,15 @@ var Route = require('react-router').Route
 
 var Form = require('./components/recruit-form.js');
 var Admin = require('./components/admin.js');
+var Success = require('./components/success.js');
 
 React.render(
 	(
 		<Router>
-			<Route path="/form" component={Form}/>
-			<Route path="/admin" component={Admin}/>
-			<Route path="/edit/:id" component={Form}/>
+			<Route name="form" path="/form" component={Form}/>
+			<Route name="admin" path="/admin" component={Admin}/>
+			<Route name="edit" path="/edit/:id" component={Form}/>
+			<Route name="success" path="/success" component={Success}/>
 		</Router>
 	),
 	document.getElementById('mainContent')
