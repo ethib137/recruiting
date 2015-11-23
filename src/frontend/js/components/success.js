@@ -18,9 +18,16 @@ module.exports = React.createClass({
 	},
 
 	render: function() {
+		var cityName = this.props.location.query.city;
+		var message = '';
+
+		if (cityName) {
+			message = 'You were sent to ' + cityName + '.';
+		}
+
 		return (
 			<div>
-				Thanks! You were sent to BLANK
+				Thanks! {message}
 			</div>
 		);
 	}

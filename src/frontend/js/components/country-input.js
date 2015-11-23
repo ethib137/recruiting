@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 var React = require('react');
+var GeoUtil = require ('countries-cities');
 
 module.exports = React.createClass({
 	componentDidMount: function() {
@@ -7,33 +8,21 @@ module.exports = React.createClass({
 
 		var countryInput = this.refs.countryInput.getDOMNode();
 
-		$.ajax(
+		$(countryInput).autocomplete(
 			{
-				url: 'staticData//countries.json',
-				type: 'GET',
-				dataType: "json",
-				success: function(json) {
-					$(countryInput).autocomplete(
-						{
-							source: json,
-							minLength: 1,
-							delay: 100,
-							select: function(event, ui) {
-								var item = ui.item;
+				source: GeoUtil.getCountries(),
+				minLength: 1,
+				delay: 100,
+				select: function(event, ui) {
+					var item = ui.item;
 
-								var parent = instance.props.parent;
+					var parent = instance.props.parent;
 
-								var recruit = parent.state.recruit;
+					var recruit = parent.state.recruit;
 
-								recruit.home = item.value;
+					recruit.missionsLocation = item.value;
 
-								parent.setState({recruit: recruit});
-							}
-						}
-					);
-				},
-				error: function(err) {
-					console.log('error', err);
+					parent.setState({recruit: recruit});
 				}
 			}
 		);

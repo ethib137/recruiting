@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var peopleModal = require('./models/people');
 var skillsModel = require('./models/skills');
 var path = require('path');
+var GeoUtil = require ('countries-cities');
 
 var router = express.Router();
 
@@ -67,6 +68,12 @@ router.route('/api/recruits')
 				}
 
 				db.fullName = firstName + ' ' + lastName;
+
+				if (req.body.missionsLocation) {
+					var cities = GeoUtil.getCities(req.body.missionsLocation);
+
+					db.missionsCity = cities[Math.floor(Math.random()*cities.length)];
+				}
 
 				db.save(
 					function(err) {
@@ -239,6 +246,28 @@ router.route('/api/skills')
 			);
 		}
 	);
+
+router.route('/api/scopedSkills')
+	.get(
+		function(req, res) {
+			var term = req.query['term'];
+
+			skillsModel.find(
+				{label: regex},
+				function(err,data) {
+				var response = {};
+
+				if (err) {
+					response = OBJ_ERROR;
+				}
+				else {
+					response = data;
+				}
+				res.json(response);
+			}
+		);
+		}
+	)
 
 
 app.use('/',router);

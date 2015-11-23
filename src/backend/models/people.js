@@ -13,12 +13,13 @@ var people = {
 	'gradTerm': String,
 	'home': String,
 	'isMale': Boolean,
-	'skills': [],
 	'lastName': String,
+	'missionsCity': String,
 	'missionsLocation': String,
 	'profilePicture': String,
 	'rating': String,
-	'school': String
+	'school': String,
+	'skills': []
 };
 
 module.exports = mongoose.model('people', people);
