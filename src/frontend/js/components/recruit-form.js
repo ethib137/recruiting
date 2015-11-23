@@ -9,6 +9,7 @@ var SkillsInput = require('./skills-input');
 var VideoInput = require('./photobooth');
 
 var History = require('react-router').History;
+var Link = require('react-router').Link
 
 module.exports = React.createClass({
 	mixins: [History],
@@ -137,6 +138,7 @@ module.exports = React.createClass({
 		var recruit = this.state.recruit;
 
 		var adminInputs;
+		var adminToolbar;
 
 		if (this.props.params.id) {
 			adminInputs = (
@@ -156,10 +158,15 @@ module.exports = React.createClass({
 					</fieldset>
 				</div>
 			);
+
+			adminToolbar = (
+				<Link to="/admin">Back to Admin Page </Link>
+			);
 		}
 
 		return (
 			<div>
+				{adminToolbar}
 				<h3>Liferay Form</h3>
 				<form action="" onSubmit={this.onSubmit} onChange={this.onInputChange}>
 					<fieldset className="form-group">

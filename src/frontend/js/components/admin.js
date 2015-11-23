@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 var React = require('react');
-var Link = require('react-router').Link
 
 var Recruit = require('./recruit-entity.js');
 
