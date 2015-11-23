@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
 var React = require('react');
+var Link = require('react-router').Link
+
+var Recruit = require('./recruit-entity.js');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -57,45 +60,7 @@ module.exports = React.createClass({
 				{
 				instance.state.recruits.map(
 					function(recruit) {
-						if (recruit.rating == 0 || instance.state.showAll) {
-							var buttonRow = null;
-
-							if (!instance.state.showAll) {
-								buttonRow = (
-									<div className="text-center">
-										<br />
-										<button data-id={recruit._id} value="-" onClick={instance.handleRecruitRating} type="button" className="pull-left btn btn-secondary">-</button>
-										<button data-id={recruit._id} value="+" onClick={instance.handleRecruitRating} type="button" className="text-center btn btn-secondary">+</button>
-										<button data-id={recruit._id} value="++" onClick={instance.handleRecruitRating} type="button" className="pull-right btn btn-secondary">++</button>
-									</div>
-								);
-							}
-
-							return (
-								<div className="card" key={recruit._id}>
-									<img className="card-img-top" src={recruit.profilePicture} />
-									<div className="card-block">
-										<h4 className="card-title text-center">{recruit.fullName}</h4>
-
-										<div>
-											School: <span>{recruit.school}</span>
-										</div>
-
-										<div>
-											Major: <span>{recruit.fieldOfStudy}</span>
-										</div>
-
-										<div>
-											<span>{recruit.rating}</span>
-										</div>
-										{buttonRow}
-									</div>
-								</div>
-							);
-						}
-						else {
-							return null;
-						}
+						return <Recruit key={recruit._id} recruit={recruit} showAll={instance.state.showAll} />;
 					}
 				)
 				}

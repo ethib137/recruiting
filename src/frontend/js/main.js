@@ -11,6 +11,7 @@ React.render(
 		<Router>
 			<Route path="/form" component={Form}/>
 			<Route path="/admin" component={Admin}/>
+			<Route path="/edit/:id" component={Form}/>
 		</Router>
 	),
 	document.getElementById('mainContent')
