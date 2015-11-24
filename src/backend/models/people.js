@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var mongoSchema = mongoose.Schema;
 
 var people = {
+	'geoPoints': Array,
 	'comments': String,
 	'email': String,
 	'exampleCodeSnippet': String,

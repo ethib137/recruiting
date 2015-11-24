@@ -20,6 +20,7 @@
     "mongoose": "^4.2.6",
     "object-assign": "^1.0.0",
     "react": "^0.13.3",
+    "react-google-maps": "^4.6.0",
     "react-router": "^1.0.0",
     "reactify": "^1.1.1"
   }

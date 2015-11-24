@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var peopleModal = require('./models/people');
 var skillsModel = require('./models/skills');
 var path = require('path');
+
 var GeoUtil = require ('countries-cities');
+var geocoder = require('node-geocoder')('google', 'http', null);
 
 var router = express.Router();
 
@@ -69,26 +71,44 @@ router.route('/api/recruits')
 
 				db.fullName = firstName + ' ' + lastName;
 
-				if (req.body.missionsLocation) {
-					var cities = GeoUtil.getCities(req.body.missionsLocation);
+				var missionsLocation = req.body.missionsLocation;
 
-					db.missionsCity = cities[Math.floor(Math.random()*cities.length)];
+				var save = function(data) {
+					data.save(
+						function(err) {
+							var response = {};
+
+							if (err) {
+								response = OBJ_ERROR;
+							}
+							else {
+								response = {'data': db, 'success': true, 'message': 'Successfully submitted!'};
+							}
+
+							res.json(response);
+						}
+					);
 				}
 
-				db.save(
-					function(err) {
-						var response = {};
+				if (missionsLocation) {
+					var cities = GeoUtil.getCities(missionsLocation);
 
-						if (err) {
-							response = OBJ_ERROR;
-						}
-						else {
-							response = {'data': db, 'success': true, 'message': 'Successfully submitted!'};
-						}
+					var city = cities[Math.floor(Math.random()*cities.length)];
 
-						res.json(response);
-					}
-				);
+					db.missionsCity = city;
+
+					geocoder.geocode(city + ',' + missionsLocation, function(err, res) {
+						var latitude = res[0].latitude;
+						var longitude = res[0].longitude;
+
+						db.geoPoints = [latitude, longitude];
+
+						save(db);
+					});
+				}
+				else {
+					save(db);
+				}
 			}
 			else {
 				res.json({'success': false, 'message': 'First name, last name, and email are all required fields.'});

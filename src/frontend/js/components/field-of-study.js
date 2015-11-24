@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
 		$.ajax(
 			{
-				url: 'staticData/majors.json',
+				url: 'staticFiles/majors.json',
 				type: 'GET',
 				dataType: "json",
 				success: function(json) {
