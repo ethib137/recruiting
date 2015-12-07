@@ -165,7 +165,7 @@ module.exports = React.createClass({
 		}
 
 		return (
-			<div>
+			<div className="form-page">
 				{adminToolbar}
 				<h3>Liferay Form</h3>
 				<form action="" onSubmit={this.onSubmit} onChange={this.onInputChange}>
