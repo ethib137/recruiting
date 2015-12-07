@@ -70,10 +70,6 @@ module.exports = React.createClass({
 			.outerRadius(radius - 10)
 			.innerRadius(0);
 
-		var labelArc = d3.svg.arc()
-			.outerRadius(radius - 40)
-			.innerRadius(radius - 40);
-
 		var pie = d3.layout.pie()
 			.sort(null)
 			.value(function(d) {
