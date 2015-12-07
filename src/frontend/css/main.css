@@ -59,6 +59,10 @@ path {
 	fill: #1c75b9;
 }
 
+.display-page {
+	overflow: hidden;
+}
+
 .banner {
 	border-bottom: 1px solid gray;
 }
