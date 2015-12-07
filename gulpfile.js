@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var server = require('gulp-express');
 var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
+var sass = require('gulp-sass');
 
 gulp.task('browserify', function() {
 	gulp.src('src/frontend/js/main.js')
@@ -11,8 +12,18 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('copy', function() {
-	gulp.src('src/frontend/**/*')
+	gulp.src('src/frontend/*')
 		.pipe(gulp.dest('dist/frontend'));
+
+	gulp.src('src/frontend/js/*')
+		.pipe(gulp.dest('dist/frontend'));
+
+	gulp.src('src/frontend/staticFiles/*')
+		.pipe(gulp.dest('dist/frontend/staticFiles'));
+
+	gulp.src('src/frontend/css/*')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest('dist/frontend/css'));
 
 	gulp.src('src/backend/**/*')
 		.pipe(gulp.dest('dist/server'));
