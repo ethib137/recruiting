@@ -91,7 +91,7 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		return (
-			<fieldset className="form-group">
+			<fieldset className="row form-group">
 				<label for="skillsInput">Know any sweet skills or languages?</label>
 				<div className="form-control">
 				{

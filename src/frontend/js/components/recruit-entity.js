@@ -78,7 +78,7 @@ module.exports = React.createClass({
 			var link = '/edit/' + recruit._id;
 
 			var buttonRow = (
-				<Link to={link}>Edit Recruit</Link>
+				<Link state={recruit} to={link}>Edit Recruit</Link>
 			);
 
 			if (!this.props.showAll) {
@@ -93,7 +93,9 @@ module.exports = React.createClass({
 
 			return (
 				<div className="card">
-					<img className="card-img-top" src={recruit.profilePicture} />
+					<div className="img-container">
+						<img className="card-img-top" src={recruit.profilePicture} />
+					</div>
 					<div className="card-block">
 						<h4 className="card-title text-center">{recruit.fullName}</h4>
 

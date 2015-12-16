@@ -98,31 +98,44 @@ module.exports = React.createClass({
 	render: function() {
 		var recruit = this.props.recruit;
 
-		var videoDisplay = false;
+		console.log("video", recruit);
 
-		if (this.state.showVideo) {
-			videoDisplay = (
-				<div>
-					<video ref="webcamDisplay" width="320" height="240" autoplay={this.state.autoplay} src={recruit.profilePicture}></video>
-					<div className="photo-countdown" ref="photoCountdown">{this.state.countdown}</div>
+		var profilePicture = recruit.profilePicture;
+
+		if (recruit._id) {
+			return (
+				<div className="img-container">
+					<img className="card-img-top" src={recruit.profilePicture} />
 				</div>
 			);
 		}
+		else {
+			var videoDisplay = false;
 
-		return (
-			<fieldset className="form-group">
-				<label for="profilePicture">Take a picture so we can remember you!</label>
-				<input ref="imageDataInput" type="hidden" name="profilePicture" />
+			if (this.state.showVideo) {
+				videoDisplay = (
+					<div>
+						<video ref="webcamDisplay" width="320" height="240" autoplay={this.state.autoplay} src={recruit.profilePicture}></video>
+						<div className="photo-countdown" ref="photoCountdown">{this.state.countdown}</div>
+					</div>
+				);
+			}
 
-				<div className="">
-					{videoDisplay}
-					<canvas ref="imageCanvas" hidden={this.state.showVideo} width="320" height="240"></canvas>
-				</div>
+			return (
+				<fieldset className="form-group photo-booth">
+					<div className="video-container">
+						{videoDisplay}
+						<canvas ref="imageCanvas" hidden={this.state.showVideo} width="320" height="240"></canvas>
+					</div>
 
-				<div className="">
-					<input ref="snapPhoto" className="btn btn-secondary" onClick={this.handleSnapPhoto} type="button" defaultValue="Snap Photo" />
-				</div>
-			</fieldset>
-		);
+					<label for="profilePicture">Take a picture so we can remember you!</label>
+					<input ref="imageDataInput" type="hidden" name="profilePicture" />
+
+					<div className="">
+						<input ref="snapPhoto" className="btn btn-secondary" onClick={this.handleSnapPhoto} type="button" defaultValue="Snap Photo" />
+					</div>
+				</fieldset>
+			);
+		}
 	}
 });

@@ -15,48 +15,65 @@ module.exports = React.createClass({
 	mixins: [History],
 
 	getInitialState: function() {
-		return {
-			autoplay: true,
-			showVideo: true,
-			countdown: null,
-			recruit: {
-				comments: null,
-				email: null,
-				exampleCodeSnippet: null,
-				fieldOfStudy: null,
-				firstName: null,
-				fullName: null,
-				githubUsername: null,
-				gradTerm: null,
-				home: null,
-				isMale: 1,
-				lastName: null,
-				missionsLocation: null,
-				profilePicture: null,
-				rating: 0,
-				school: null,
-				skills: []
-			}
-		};
+		var id = this.props.params.id;
+
+		var recruit = this.props.location.state;
+
+		if (recruit && recruit.firstName != null) {
+			return {
+				autoplay: false,
+				showVideo: false,
+				edit: true,
+				recruit: recruit
+			};
+		}
+		else {
+			console.log('initialState', this);
+			return {
+				autoplay: true,
+				showVideo: true,
+				countdown: null,
+				recruit: {
+					comments: null,
+					confirmEmail: null,
+					contactMe: true,
+					email: null,
+					exampleCodeSnippet: null,
+					fieldOfStudy: null,
+					firstName: null,
+					fullName: null,
+					githubUsername: null,
+					gradTerm: null,
+					home: null,
+					isMale: true,
+					lastName: null,
+					missionsLocation: null,
+					profilePicture: null,
+					rating: 0,
+					school: null,
+					skills: []
+				}
+			};
+		}
 	},
 
 	componentDidMount: function() {
 		var id = this.props.params.id;
 
-		if (id) {
-			$.get(
-			'/api/recruits/' + id,
-			function(data){
-				this.setState(
-					{
-						autoplay: false,
-						showVideo: false,
-						edit: true,
-						recruit: data
-					}
-				);
-			}.bind(this));
-		}
+		// if (id) {
+		// 	$.get(
+		// 	'/api/recruits/' + id,
+		// 	function(data){
+		// 		this.setState(
+		// 			{
+		// 				autoplay: false,
+		// 				showVideo: false,
+		// 				edit: true,
+		// 				recruit: data
+		// 			}
+		// 		);
+		// 	}.bind(this));
+		// }
 	},
 
 	addSkill: function(skill) {
@@ -91,9 +108,20 @@ module.exports = React.createClass({
 	onInputChange: function(event) {
 		var targetInput = event.target;
 
+		var value = targetInput.value;
+
+		var type = targetInput.type;
+
+		if (type == 'checkbox') {
+			value = targetInput.checked;
+		}
+		else if (type == 'radio') {
+			value = targetInput.id == 'isMale1';
+		}
+
 		var recruit = this.state.recruit;
 
-		recruit[targetInput.name] = targetInput.value;
+		recruit[targetInput.name] = value;
 
 		this.setState({recruit: recruit});
 	},
@@ -142,20 +170,28 @@ module.exports = React.createClass({
 
 		if (this.props.params.id) {
 			adminInputs = (
-				<div className="admin-only">
-					<fieldset className="form-group">
-						<label for="comments">Comments</label>
-						<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
-					</fieldset>
+				<div className="admin-only row">
+					<h3 className="admin-only">Admin</h3>
 
-					<fieldset className="form-group">
-						<label for="rating">Rating</label>
-						<select className="form-control" name="rating" defaultValue={recruit.rating}>
-							<option>-</option>
-							<option>+</option>
-							<option>++</option>
-						</select>
-					</fieldset>
+					<div className="admin-only form-card">
+							<div className="col-md-8">
+								<fieldset className="form-group">
+									<label for="comments">Comments</label>
+									<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
+								</fieldset>
+							</div>
+
+							<div className="col-md-4">
+								<fieldset className="form-group">
+									<label for="rating">Rating</label>
+									<select className="form-control" name="rating" defaultValue={recruit.rating}>
+										<option>-</option>
+										<option>+</option>
+										<option>++</option>
+									</select>
+								</fieldset>
+							</div>
+					</div>
 				</div>
 			);
 
@@ -164,67 +200,143 @@ module.exports = React.createClass({
 			);
 		}
 
+		var female = 'checked';
+		var male = '';
+
+		console.log(recruit);
+
+		if (recruit.isMale) {
+			female = '';
+			male = 'checked';
+		}
+
 		return (
-			<div className="form-page">
+			<div className="container-fluid form-page">
 				{adminToolbar}
-				<h3>Liferay Form</h3>
 				<form action="" onSubmit={this.onSubmit} onChange={this.onInputChange}>
-					<fieldset className="form-group">
-						<label for="firstName">First Name</label>
-						<small className="text-muted">(Required)</small>
-						<input type="text" className="form-control" name="firstName" placeholder="Foo" value={recruit.firstName} />
-					</fieldset>
+					<div className="row">
+						<div className="col-md-4">
+							<VideoInput recruit={recruit} parent={this} />
+						</div>
 
-					<fieldset className="form-group">
-						<label for="lastName">Last Name</label>
-						<small className="text-muted">(Required)</small>
-						<input type="text" className="form-control" name="lastName" placeholder="Bar" value={recruit.lastName} />
-					</fieldset>
+						<div className="col-md-8">
+							<h3 className="personal">Personal</h3>
 
-					<fieldset className="form-group">
-						<label for="email">Email</label>
-						<small className="text-muted">(Required)</small>
-						<input type="text" className="form-control" name="email" placeholder="Baz" value={recruit.email} />
-					</fieldset>
+							<div className="form-card personal">
+								<div className="row">
+									<div className="col-md-4">
+										<fieldset className="row form-group">
+											<label for="firstName">First Name</label>
+											<small className="text-muted">(Required)</small>
+											<input type="text" className="form-control" name="firstName" placeholder="Jim" value={recruit.firstName} />
+										</fieldset>
+									</div>
+									<div className="col-md-4">
+										<fieldset className="row form-group">
+											<label for="lastName">Last Name</label>
+											<small className="text-muted">(Required)</small>
+											<input type="text" className="form-control" name="lastName" placeholder="Elliot" value={recruit.lastName} />
+										</fieldset>
+									</div>
 
-					<fieldset className="form-group">
-						<label for="isMale">Gender</label>
-						<select className="form-control" name="isMale" defaultValue={recruit.isMale ? 'Male' : 'Female'}>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
-					</fieldset>
+									<fieldset className="col-md-4 form-group">
+										<label for="isMale">Gender</label>
+										<div class="radio">
+											<label className="col-md-6">
+												<input type="radio" name="isMale" id="isMale1" defaultChecked={recruit.isMale} defaultValue={recruit.isMale} />
+												Male
+											</label>
+											<label className="col-md-6">
+												<input type="radio" name="isMale" id="isMale2" defaultChecked={!recruit.isMale} defaultValue={!recruit.isMale} />
+												Female
+											</label>
+										</div>
+									</fieldset>
+								</div>
 
-					<HomeInput recruit={recruit} parent={this} />
+								<div className="row">
+									<div className="col-md-4">
+										<fieldset className="row form-group">
+											<label for="email">Email</label>
+											<small className="text-muted">(Required)</small>
+											<input type="text" className="form-control" name="email" placeholder="jim.elliot@gmail.com" value={recruit.email} />
+										</fieldset>
+									</div>
+									<div className="col-md-4">
+										<fieldset className="row form-group">
+											<label for="confirmEmail">Confirm Email</label>
+											<small className="text-muted">(Required)</small>
+											<input type="text" className="form-control" name="confirmEmail" placeholder="jim.elliot@gmail.com" value={recruit.confirmEmail} />
+										</fieldset>
+									</div>
+								</div>
 
-					<MissionsInput recruit={recruit} parent={this} />
+								<div className="row">
+									<div className="col-md-6">
+										<HomeInput recruit={recruit} parent={this} />
+									</div>
+									<div className="col-md-6">
+										<MissionsInput recruit={recruit} parent={this} />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-					<fieldset className="form-group">
-						<label for="school">School</label><small className="text-muted">(Only if applicable)</small>
-						<input type="text" className="form-control" name="school" placeholder="Qux" value={recruit.school} />
-					</fieldset>
+					<div className="row secondary-info">
+						<div className="col-md-4">
+							<h3 className="education">Education</h3>
 
-					<FieldOfStudyInput recruit={recruit} parent={this} />
+							<div className="form-card education">
+								<fieldset className="row form-group">
+									<label for="school">School</label><small className="text-muted">(Only if applicable)</small>
+									<input type="text" className="form-control" name="school" placeholder="Wheaton College" value={recruit.school} />
+								</fieldset>
 
-					<GradTermInput recruit={recruit} parent={this} />
+								<FieldOfStudyInput recruit={recruit} parent={this} />
 
-					<SkillsInput recruit={recruit} parent={this} />
+								<GradTermInput recruit={recruit} parent={this} />
+							</div>
+						</div>
 
-					<VideoInput recruit={recruit} parent={this} />
+						<div className="col-md-4">
+							<h3 className="skills-group">Skills</h3>
+							
+							<div className="form-card skills-group">
+								<SkillsInput recruit={recruit} parent={this} />
+								<SkillsInput recruit={recruit} parent={this} />
+							</div>
 
-					<fieldset className="form-group">
-						<label for="exampleCodeSnippet">Know any code? Say hello to the world!</label>
-						<textarea className="form-control" name="exampleCodeSnippet" rows="5" placeholder="Hello World" value={recruit.exampleCodeSnippet} ></textarea>
-					</fieldset>
+							<fieldset className="row form-group contact-me">
+								<label className="checkbox-inline">
+									<input type="checkbox" className="form-control" name="contactMe" defaultChecked={recruit.contactMe} defaultValue={recruit.contactMe} />
+									Contact me about a job.
+								</label>
+							</fieldset>
+						</div>
 
-					<fieldset className="form-group">
-						<label for="githubUsername">Github Username</label>
-						<input type="text" className="form-control" name="githubUsername" placeholder="https://github.com/Corge" value={recruit.githubUsername} />
-					</fieldset>
+						<div className="col-md-4">
+							<h3 className="elsewhere">Elsewhere</h3>
+
+							<div className="form-card elsewhere">
+								<fieldset className="row form-group">
+									<label for="githubUsername">Github Username</label>
+									<input type="text" className="form-control" name="githubUsername" placeholder="https://github.com/Corge" value={recruit.githubUsername} />
+								</fieldset>
+
+								<fieldset className="row form-group">
+									<label for="portfolioSite">Portfolio Site</label>
+									<input type="text" className="form-control" name="portfolioSite" placeholder="https://myPortfolio.com/" value={recruit.portfolioSite} />
+								</fieldset>
+							</div>
+						</div>
+					</div>
 
 					{adminInputs}
 
-					<button className="btn btn-primary" type="submit">Submit</button>
+					<div className="btn-holder row">
+						<button className="btn btn-primary btn-lg" type="submit">Submit</button>
+					</div>
 				</form>
 			</div>
 		);

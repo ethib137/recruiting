@@ -43,9 +43,9 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		return (
-			<fieldset className="form-group">
+			<fieldset className="row form-group">
 				<label for="home">Where do you call home?</label>
-				<input ref="homeInput" type="text" className="form-control" name="home" placeholder="City, State, Country" defaultValue={recruit.home} />
+				<input ref="homeInput" type="text" className="form-control" name="home" placeholder="Portland, Oregon, USA" value={recruit.home} />
 			</fieldset>
 		);
 	}

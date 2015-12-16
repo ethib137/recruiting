@@ -32,9 +32,9 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		return (
-			<fieldset className="form-group">
-				<label for="missionsLocation">If you could live missionally in any country where would it be?</label>
-				<input ref="countryInput" type="text" className="form-control" name="missionsLocation" placeholder="Country" defaultValue={recruit.missionsLocation} />
+			<fieldset className="row form-group">
+				<label for="missionsLocation">If you could be on mission anywhere, where would it be?</label>
+				<input ref="countryInput" type="text" className="form-control" name="missionsLocation" placeholder="Ecuador" value={recruit.missionsLocation} />
 			</fieldset>
 		);
 	}

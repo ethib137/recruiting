@@ -43,9 +43,9 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		return (
-			<fieldset className="form-group">
+			<fieldset className="row form-group">
 				<label for="fieldOfStudy">Undergraduate Major</label>
-				<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Major" defaultValue={recruit.fieldOfStudy} />
+				<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Greek" value={recruit.fieldOfStudy} />
 			</fieldset>
 		);
 	}

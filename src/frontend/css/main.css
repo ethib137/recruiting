@@ -1,3 +1,7 @@
+body {
+	color: #233240;
+}
+
 .alert {
 	position: fixed;
 	right: 0;
@@ -82,4 +86,146 @@ path {
 
 .map-container {
 	border-top: 1px solid gray;
+}
+
+.form-page {
+	padding: 30px;
+}
+
+.img-container {
+	border-radius: 50%;
+	height: 240px;
+	margin: 20px auto;
+	overflow: hidden;
+	position: relative;
+	width: 240px;
+
+	img {
+		height: 240px;
+		margin-left: -40px;
+		width: auto;
+	}
+}
+
+/* ---------- Form ---------- */
+
+.form-control {
+	border-width: 0;
+	color: #233240;
+}
+
+.form-group {
+	padding: 0 20px;
+}
+
+input[type="radio"] {
+	margin-right: 4px;
+}
+
+h3 {
+	&.skills-group {
+		color: #FFB700;
+	}
+
+	&.education {
+		color: #77D55A;
+	}
+
+	&.elsewhere {
+		color: #E64545;
+	}
+
+	&.personal {
+		color: #1f7AFF;
+	}
+
+	&.admin-only {
+		color: #9552EF;
+	}
+}
+
+.text-muted {
+	color: #FFF;
+	margin-left: 4px;
+}
+
+.photo-booth {
+	margin-bottom: 30px;
+	text-align: center;
+
+	.video-container {
+		background-color: #000;
+		border-radius: 50%;
+		height: 240px;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+		width: 240px;
+	}
+
+	canvas, video {
+		margin-left: -40px;
+	}
+}
+
+.secondary-info {
+	margin-top: 20px;
+}
+
+.btn-holder {
+	margin: 20px 0;
+	text-align: center;
+
+	.btn {
+		min-width: 200px;
+	}
+}
+
+.admin-only.row {
+	margin: 30px 0;
+}
+
+.form-card {
+	border-radius: 10px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+	color: #FFF;
+	padding: 12px 20px 6px 20px;
+	box-sizing: border-box;
+
+	&.skills-group {
+		background-color: #FFB700;
+	}
+
+	&.education {
+		background-color: #77D55A;
+	}
+
+	&.elsewhere {
+		background-color: #E64545;
+	}
+
+	&.personal {
+		background-color: #1f7AFF;
+	}
+
+	&.admin-only {
+		background-color: #9552EF;
+		overflow: hidden;
+
+		.col-md-8, .col-md-4 {
+			padding: 0 4px;
+		}
+
+		.col-md-4 {
+			padding-left: 20px;
+		}
+
+		.form-group {
+			padding: 0;
+		}
+	}
+}
+
+.contact-me {
+	margin-top: 20px;
 }

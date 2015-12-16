@@ -24,9 +24,9 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		return (
-			<fieldset className="form-group">
+			<fieldset className="row form-group">
 				<label for="gradTerm">Graduation Date</label>
-				<input ref="gradTerm" type="text" className="form-control" name="gradTerm" placeholder="Quux" defaultValue={recruit.gradTerm} />
+				<input ref="gradTerm" type="text" className="form-control" name="gradTerm" placeholder="May 1949" value={recruit.gradTerm} />
 			</fieldset>
 		);
 	}
