@@ -1,91 +1,13 @@
+/* ---------- Base Styles ---------- */
+
 body {
 	color: #233240;
-}
-
-.alert {
-	position: fixed;
-	right: 0;
-	text-align: center;
-	top: 0;
-	width: 100%;
-}
-
-.form-page .recruits-container {
-	padding: 100px 0;
-}
-
-.card {
-	display: inline-block;
-	width: 33%;
-}
-
-.card-img-top {
-	width: 100%;
-}
-
-.skill-pill {
-	border-radius: 12px;
-	border: 1px solid;
-	display: inline-block;
-	margin-right: 8px;
-	padding: 0 4px;
-}
-
-.skill-pill .close {
-	border-left: 1px solid;
-	float: none;
-	padding: 0 2px;
-	vertical-align: top;
-}
-
-.skill-pill .close > span {
-	pointer-events: none;
-}
-
-.skill-pill > span {
-	max-width: 150px;
-	padding: 0 4px;
-	vertical-align: middle;
-}
-
-.skills-input {
-	border-width: 0;
-	width: auto;
-}
-
-.skills-input:focus {
-	outline-width: 0;
 }
 
 path {
 	stroke: white;
 	stroke-width: 0.25px;
 	fill: #1c75b9;
-}
-
-.display-page {
-	overflow: hidden;
-}
-
-.banner {
-	border-bottom: 1px solid gray;
-}
-
-.display-container {
-	display: flex;
-}
-
-.column-graph-container {
-	flex: 1;
-	border-right: 1px solid #808080;
-}
-
-.column-two {
-	flex: 3;
-}
-
-.map-container {
-	border-top: 1px solid gray;
 }
 
 .img-container {
@@ -103,10 +25,31 @@ path {
 	}
 }
 
+/* ---------- Admin ---------- */
+
+.card {
+	display: inline-block;
+	width: 33%;
+}
+
+.card-img-top {
+	width: 100%;
+}
+
+/* ---------- Display Page---------- */
+
+.display-page {
+	overflow: hidden;
+}
+
 /* ---------- Form ---------- */
 
 .form-page {
 	padding: 30px;
+
+	.recruits-container {
+		padding: 100px 0;
+	}
 }
 
 .form-control {
@@ -170,6 +113,40 @@ h3 {
 
 .secondary-info {
 	margin-top: 20px;
+}
+
+.skills-input {
+	border-width: 0;
+	width: auto;
+
+	&:focus {
+		outline-width: 0;
+	}
+}
+
+.skill-pill {
+	border-radius: 12px;
+	border: 1px solid;
+	display: inline-block;
+	margin-right: 8px;
+	padding: 0 4px;
+
+	> span {
+		max-width: 150px;
+		padding: 0 4px;
+		vertical-align: middle;
+	}
+
+	.close {
+		border-left: 1px solid;
+		float: none;
+		padding: 0 2px;
+		vertical-align: top;
+
+		> span {
+			pointer-events: none;
+		}
+	}
 }
 
 .btn-holder {
