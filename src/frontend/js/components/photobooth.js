@@ -11,33 +11,37 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.canvasNode = this.refs.imageCanvas.getDOMNode();
-		var videoDisplay = this.refs.webcamDisplay.getDOMNode();
+		var recruit = this.props.recruit;
 
-		this.videoDisplay = videoDisplay;
+		if (!recruit._id) {
+			this.canvasNode = this.refs.imageCanvas.getDOMNode();
+			var videoDisplay = this.refs.webcamDisplay.getDOMNode();
 
-		var videoObj = {"video": true};
+			this.videoDisplay = videoDisplay;
 
-		var errBack = function(error) {
-			console.log('Video capture error: ', error.code);
-		};
+			var videoObj = {"video": true};
 
-		if(navigator.getUserMedia) { // Standard
-			navigator.getUserMedia(videoObj, function(stream) {
-				videoDisplay.src = stream;
-				videoDisplay.play();
-			}, errBack);
-		} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-			navigator.webkitGetUserMedia(videoObj, function(stream){
-				videoDisplay.src = window.URL.createObjectURL(stream);
-				videoDisplay.play();
-			}, errBack);
-		}
-		else if(navigator.mozGetUserMedia) { // Firefox-prefixed
-			navigator.mozGetUserMedia(videoObj, function(stream){
-				videoDisplay.src = window.URL.createObjectURL(stream);
-				videoDisplay.play();
-			}, errBack);
+			var errBack = function(error) {
+				console.log('Video capture error: ', error.code);
+			};
+
+			if(navigator.getUserMedia) { // Standard
+				navigator.getUserMedia(videoObj, function(stream) {
+					videoDisplay.src = stream;
+					videoDisplay.play();
+				}, errBack);
+			} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+				navigator.webkitGetUserMedia(videoObj, function(stream){
+					videoDisplay.src = window.URL.createObjectURL(stream);
+					videoDisplay.play();
+				}, errBack);
+			}
+			else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+				navigator.mozGetUserMedia(videoObj, function(stream){
+					videoDisplay.src = window.URL.createObjectURL(stream);
+					videoDisplay.play();
+				}, errBack);
+			}
 		}
 	},
 
@@ -99,8 +103,6 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		console.log("video", recruit);
-
-		var profilePicture = recruit.profilePicture;
 
 		if (recruit._id) {
 			return (
