@@ -1,13 +1,30 @@
+$black: #000;
+$blue: #1f7AFF;
+$green: #77D55A;
+$purple: #9552EF;
+$red: #E64545;
+$white: #FFF;
+$yellow: #FFB700;
+
 /* ---------- Base Styles ---------- */
 
 body {
+	background: #F4F8FF;
 	color: #233240;
 }
 
 path {
-	stroke: white;
+	fill: $blue;
 	stroke-width: 0.25px;
-	fill: #1c75b9;
+	stroke: $white;
+}
+
+circle {
+	&.map-user {
+		fill: $white;
+		stroke: #233240;
+		stroke-width: 0.5px;
+	}
 }
 
 .img-container {
@@ -40,6 +57,17 @@ path {
 
 .display-page {
 	overflow: hidden;
+
+	.map-container {
+		height: 475px;
+	}
+}
+
+.liferay-office {
+	fill: $white;
+	stroke: #233240;
+	stroke-width: 0.5px;
+	font-family: 'FontAwesome';
 }
 
 /* ---------- Form ---------- */
@@ -67,28 +95,28 @@ input[type="radio"] {
 
 h3 {
 	&.skills-group {
-		color: #FFB700;
+		color: $yellow;
 	}
 
 	&.education {
-		color: #77D55A;
+		color: $green;
 	}
 
 	&.elsewhere {
-		color: #E64545;
+		color: $red;
 	}
 
 	&.personal {
-		color: #1f7AFF;
+		color: $blue;
 	}
 
 	&.admin-only {
-		color: #9552EF;
+		color: $purple;
 	}
 }
 
 .text-muted {
-	color: #FFF;
+	color: $white;
 	margin-left: 4px;
 }
 
@@ -165,28 +193,28 @@ h3 {
 .form-card {
 	border-radius: 10px;
 	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
-	color: #FFF;
+	color: $white;
 	padding: 12px 20px 6px 20px;
 	box-sizing: border-box;
 
 	&.skills-group {
-		background-color: #FFB700;
+		background-color: $yellow;
 	}
 
 	&.education {
-		background-color: #77D55A;
+		background-color: $green;
 	}
 
 	&.elsewhere {
-		background-color: #E64545;
+		background-color: $red;
 	}
 
 	&.personal {
-		background-color: #1f7AFF;
+		background-color: $blue;
 	}
 
 	&.admin-only {
-		background-color: #9552EF;
+		background-color: $purple;
 		overflow: hidden;
 
 		.col-md-8, .col-md-4 {
