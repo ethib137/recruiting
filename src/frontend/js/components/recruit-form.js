@@ -15,20 +15,17 @@ module.exports = React.createClass({
 	mixins: [History],
 
 	getInitialState: function() {
-		var id = this.props.params.id;
+		var props = this.props;
 
-		var recruit = this.props.location.state;
-
-		if (recruit && recruit.firstName != null) {
+		if (props.params.id) {
 			return {
 				autoplay: false,
 				showVideo: false,
 				edit: true,
-				recruit: recruit
+				recruit: props.location.state
 			};
 		}
 		else {
-			console.log('initialState', this);
 			return {
 				autoplay: true,
 				showVideo: true,
@@ -48,6 +45,7 @@ module.exports = React.createClass({
 					isMale: true,
 					lastName: null,
 					missionsLocation: null,
+					portfolioSite: null,
 					profilePicture: null,
 					rating: 0,
 					school: null,
@@ -100,8 +98,6 @@ module.exports = React.createClass({
 			}
 		);
 
-		console.log(recruit.skills);
-
 		this.setState({recruit: recruit});
 	},
 
@@ -114,9 +110,6 @@ module.exports = React.createClass({
 
 		if (type == 'checkbox') {
 			value = targetInput.checked;
-		}
-		else if (type == 'radio') {
-			value = targetInput.id == 'isMale1';
 		}
 
 		var recruit = this.state.recruit;
@@ -200,16 +193,6 @@ module.exports = React.createClass({
 			);
 		}
 
-		var female = 'checked';
-		var male = '';
-
-		console.log(recruit);
-
-		if (recruit.isMale) {
-			female = '';
-			male = 'checked';
-		}
-
 		return (
 			<div className="container-fluid form-page">
 				{adminToolbar}
@@ -243,11 +226,11 @@ module.exports = React.createClass({
 										<label for="isMale">Gender</label>
 										<div class="radio">
 											<label className="col-md-6">
-												<input type="radio" name="isMale" id="isMale1" defaultChecked={recruit.isMale} defaultValue={recruit.isMale} />
+												<input type="radio" name="isMale" id="isMale1" defaultChecked={recruit.isMale} value="true" />
 												Male
 											</label>
 											<label className="col-md-6">
-												<input type="radio" name="isMale" id="isMale2" defaultChecked={!recruit.isMale} defaultValue={!recruit.isMale} />
+												<input type="radio" name="isMale" id="isMale2" defaultChecked={!recruit.isMale} value="false" />
 												Female
 											</label>
 										</div>

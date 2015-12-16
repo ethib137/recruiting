@@ -102,8 +102,6 @@ module.exports = React.createClass({
 	render: function() {
 		var recruit = this.props.recruit;
 
-		console.log("video", recruit);
-
 		if (recruit._id) {
 			return (
 				<div className="img-container">

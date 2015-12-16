@@ -32,8 +32,6 @@ module.exports = React.createClass({
 				type: 'PUT',
 				url: '/api/recruits/' + recruit._id,
 				success: function(response){
-					console.log(response);
-
 					instance.setState(
 						{
 							addComment: false,
