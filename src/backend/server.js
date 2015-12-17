@@ -135,25 +135,32 @@ router.route('/api/recruits')
 						}
 					},
 					function(callback){
-						if (missionsLocation) {
-							var cities = GeoUtil.getCities(missionsLocation);
+						if (!missionsLocation) {
+							var countries = GeoUtil.getCountries();
 
-							var city = cities[Math.floor(Math.random()*cities.length)];
+							missionsLocation = countries[Math.floor(Math.random() * countries.length)];
+
+							db.missionsLocation = missionsLocation;
+
+							console.log('missionsLocation', missionsLocation);
+						}
+
+						var cities = GeoUtil.getCities(missionsLocation);
+
+						if (cities) {
+							var city = cities[Math.floor(Math.random() * cities.length)];
 
 							db.missionsCity = city;
-
-							geocoder.geocode(city + ',' + missionsLocation, function(err, res) {
-								var latitude = res[0].latitude;
-								var longitude = res[0].longitude;
-
-								db.geoPoints = [latitude, longitude];
-
-								callback(null, 2);
-							});
 						}
-						else {
+
+						geocoder.geocode(city + ',' + missionsLocation, function(err, res) {
+							var latitude = res[0].latitude;
+							var longitude = res[0].longitude;
+
+							db.geoPoints = [latitude, longitude];
+
 							callback(null, 2);
-						}
+						});
 					}
 				],
 				function() {
