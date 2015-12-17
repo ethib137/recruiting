@@ -67,21 +67,21 @@ module.exports = React.createClass({
 	renderLiferayOffices: function(svg, projection) {
 		var fontSize = 12;
 
-		svg.selectAll('.pin')
-			.data(LiferayOffices).enter()
-			.append('text')
-				.attr('class', 'liferay-office')
-				.attr('font-size', fontSize)
-				.text('\uf1ad' )
-				.attr('transform', function(d) {
-					d = [d[1], d[0]];
+		// svg.selectAll('.pin')
+		// 	.data(LiferayOffices).enter()
+		// 	.append('text')
+		// 		.attr('class', 'liferay-office')
+		// 		.attr('font-size', fontSize)
+		// 		.text('\uf1ad' )
+		// 		.attr('transform', function(d) {
+		// 			d = [d[1], d[0]];
 
-					var xy = projection(d);
+		// 			var xy = projection(d);
 
-					xy = [xy[0] - (fontSize / 2), xy[1] + (fontSize / 2)]
+		// 			xy = [xy[0] - (fontSize / 2), xy[1] + (fontSize / 2)]
 
-					return 'translate(' + xy + ')';
-				});
+		// 			return 'translate(' + xy + ')';
+		// 		});
 	},
 
 	renderMap: function(svg, projection) {

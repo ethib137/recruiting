@@ -16,15 +16,7 @@ body {
 path {
 	fill: $blue;
 	stroke-width: 0.25px;
-	stroke: $white;
-}
-
-circle {
-	&.map-user {
-		fill: $white;
-		stroke: #233240;
-		stroke-width: 0.5px;
-	}
+	stroke: #233240;
 }
 
 .img-container {
@@ -54,6 +46,11 @@ circle {
 }
 
 /* ---------- Display Page---------- */
+circle {
+	&.map-user {
+		fill: rgba($white, 0.3);
+	}
+}
 
 .display-page {
 	overflow: hidden;
