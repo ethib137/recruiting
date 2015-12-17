@@ -35,13 +35,13 @@ module.exports = React.createClass({
 		return (
 			<div className="display-page">
 				<div className="row">
-					<div ref="attendeeBreakDown" className="col-sm-2"></div>
+					<div ref="attendeeBreakDown" className="col-sm-2 side-bar left"></div>
 
 					<Map recruits={this.state.recruits}/>
 
-					<div className="col-sm-2"></div>
+					<div className="col-sm-2 side-bar right"></div>
 				</div>
-				<div ref="skillsBreakDownColumn" className="row"></div>
+				<div ref="skillsBreakDownColumn" className="row side-bar bottom"></div>
 			</div>
 		);
 	}

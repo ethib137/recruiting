@@ -99,27 +99,6 @@ module.exports = React.createClass({
 		});
 	},
 
-	cycleUsers: function(svg) {
-		d3.selectAll('.map-user').each(
-			function(data, index) {
-				var delay = 5000;
-
-				d3.select(this)
-					.transition()
-					.delay(delay * index)
-						.duration(1000)
-						.attr('r', function(d) {
-							return 50;
-						})
-					.transition()
-					.delay((delay * index) + (delay - 1000))
-						.attr('r', function(d) {
-							return 2.5;
-						})
-			}
-		);
-	},
-
 	renderUserPins: function(svg, projection) {
 		var instance = this;
 
@@ -133,8 +112,6 @@ module.exports = React.createClass({
 
 					return 'translate(' + projection(arr) + ')';
 				});
-
-		instance.cycleUsers(svg);
 	},
 
 	render: function() {

@@ -60,6 +60,7 @@ circle {
 
 	.map-container {
 		height: 475px;
+		overflow: hidden;
 	}
 }
 
@@ -68,6 +69,26 @@ circle {
 	stroke: #233240;
 	stroke-width: 0.5px;
 	font-family: 'FontAwesome';
+}
+
+.side-bar {
+	border-radius: 10px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+	color: $white;
+	padding: 12px 20px 6px 20px;
+	box-sizing: border-box;
+
+	&.left {
+		background-color: $yellow;
+	}
+
+	&.right {
+		background-color: $green;
+	}
+
+	&.bottom {
+		background-color: $red;
+	}
 }
 
 /* ---------- Form ---------- */
