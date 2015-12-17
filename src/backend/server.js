@@ -4,10 +4,14 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/recruiting');
 
+var async = require('async');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
+var path = require('path');
 var peopleModal = require('./models/people');
 var skillsModel = require('./models/skills');
-var path = require('path');
+
 
 var GeoUtil = require ('countries-cities');
 var geocoder = require('node-geocoder')('google', 'http', null);
@@ -18,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended' : false}));
 
 app.use('/', express.static(path.join(__dirname, '../frontend/')));
+app.use('/data', express.static(path.join(__dirname, '../data/')));
 
 var OBJ_ERROR = {'success': false, 'message': 'Unknown Error Occured'};
 
@@ -90,25 +95,70 @@ router.route('/api/recruits')
 					);
 				}
 
-				if (missionsLocation) {
-					var cities = GeoUtil.getCities(missionsLocation);
+				async.series([
+					function(callback){
+						if (db.profilePicture) {
+							function decodeBase64Image(dataString) {
+								var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+								response = {};
 
-					var city = cities[Math.floor(Math.random()*cities.length)];
+								if (matches.length !== 3) {
+									return new Error('Invalid input string');
+								}
 
-					db.missionsCity = city;
+								response.type = matches[1];
+								response.data = new Buffer(matches[2], 'base64');
 
-					geocoder.geocode(city + ',' + missionsLocation, function(err, res) {
-						var latitude = res[0].latitude;
-						var longitude = res[0].longitude;
+								return response;
+							}
 
-						db.geoPoints = [latitude, longitude];
+							var imageBuffer = decodeBase64Image(db.profilePicture);
 
-						save(db);
-					});
-				}
-				else {
+							var dataDirectory = path.join(__dirname, '../data/');
+
+							mkdirp(dataDirectory, function(err) {
+								if (err) {
+									return;
+								}
+
+								var filePath = dataDirectory + db._id + '.jpg'
+
+								fs.writeFile(filePath, imageBuffer.data, function(err) {});
+
+								db.profilePicture = '/data/' + db._id + '.jpg';
+
+								callback(null, 1);
+							});
+						}
+						else {
+							callback(null, 1);
+						}
+					},
+					function(callback){
+						if (missionsLocation) {
+							var cities = GeoUtil.getCities(missionsLocation);
+
+							var city = cities[Math.floor(Math.random()*cities.length)];
+
+							db.missionsCity = city;
+
+							geocoder.geocode(city + ',' + missionsLocation, function(err, res) {
+								var latitude = res[0].latitude;
+								var longitude = res[0].longitude;
+
+								db.geoPoints = [latitude, longitude];
+
+								callback(null, 2);
+							});
+						}
+						else {
+							callback(null, 2);
+						}
+					}
+				],
+				function() {
 					save(db);
-				}
+				});
 			}
 			else {
 				res.json({'success': false, 'message': 'First name, last name, and email are all required fields.'});
