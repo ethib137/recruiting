@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended' : false}));
 
 app.use('/', express.static(path.join(__dirname, '../frontend/')));
-app.use('/data', express.static(path.join(__dirname, '../data/')));
+app.use('/documents', express.static(path.join(__dirname, '../documents/')));
 
 var OBJ_ERROR = {'success': false, 'message': 'Unknown Error Occured'};
 
@@ -114,7 +114,7 @@ router.route('/api/recruits')
 
 							var imageBuffer = decodeBase64Image(db.profilePicture);
 
-							var dataDirectory = path.join(__dirname, '../data/');
+							var dataDirectory = path.join(__dirname, '../documents/');
 
 							mkdirp(dataDirectory, function(err) {
 								if (err) {
@@ -125,7 +125,7 @@ router.route('/api/recruits')
 
 								fs.writeFile(filePath, imageBuffer.data, function(err) {});
 
-								db.profilePicture = '/data/' + db._id + '.jpg';
+								db.profilePicture = '/documents/' + db._id + '.jpg';
 
 								callback(null, 1);
 							});

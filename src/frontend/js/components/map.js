@@ -107,6 +107,11 @@ module.exports = React.createClass({
 			.append('circle')
 				.attr('class', 'map-user')
 				.attr('r', 2.5)
+				.attr('fill', '#FFFFFF')
+				.attr('opacity', '0.3')
+				.attr('id', function(d) {
+					return 'people' + d._id;
+				})
 				.attr('transform', function(d) {
 					var arr = [d.geoPoints[1], d.geoPoints[0]];
 

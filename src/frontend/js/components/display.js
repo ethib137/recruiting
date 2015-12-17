@@ -2,6 +2,7 @@
 var React = require('react');
 
 var Map = require('./map');
+var AttendeeSnapshot = require('./attendee-snapshot');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -35,12 +36,17 @@ module.exports = React.createClass({
 		return (
 			<div className="display-page">
 				<div className="row">
-					<div ref="attendeeBreakDown" className="col-sm-2 side-bar left"></div>
+					<div ref="attendeeBreakDown" className="col-sm-2">
+						<AttendeeSnapshot recruits={this.state.recruits}/>
+					</div>
 
 					<Map recruits={this.state.recruits}/>
 
-					<div className="col-sm-2 side-bar right"></div>
+					<div className="col-sm-2">
+						<div className="side-bar right"></div>
+					</div>
 				</div>
+
 				<div ref="skillsBreakDownColumn" className="row side-bar bottom"></div>
 			</div>
 		);

@@ -25,6 +25,7 @@ path {
 	margin: 20px auto;
 	overflow: hidden;
 	position: relative;
+	text-align: right;
 	width: 240px;
 
 	img {
@@ -46,18 +47,12 @@ path {
 }
 
 /* ---------- Display Page---------- */
-circle {
-	&.map-user {
-		fill: rgba($white, 0.3);
-	}
-}
 
 .display-page {
-	overflow: hidden;
-
 	.map-container {
 		height: 475px;
 		overflow: hidden;
+		padding: 0;
 	}
 }
 
@@ -77,14 +72,32 @@ circle {
 
 	&.left {
 		background-color: $yellow;
+		margin-top: 20px;
+
+		.attendee-details {
+			span{
+				font-weight: 600;
+				padding-right: 12px;
+			}
+		}
 	}
 
 	&.right {
 		background-color: $green;
+		margin-top: 20px;
 	}
 
 	&.bottom {
 		background-color: $red;
+	}
+
+	.img-container {
+		height: 200px;
+		width: 200px;
+
+		img {
+			height: 200px;
+		}
 	}
 }
 

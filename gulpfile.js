@@ -27,6 +27,9 @@ gulp.task('copy', function() {
 
 	gulp.src('src/backend/**/*')
 		.pipe(gulp.dest('dist/server'));
+
+	gulp.src('src/documents/**/*')
+		.pipe(gulp.dest('dist/documents'));
 });
 
 gulp.task('default',['browserify', 'copy']);
