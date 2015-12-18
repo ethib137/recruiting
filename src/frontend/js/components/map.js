@@ -102,8 +102,16 @@ module.exports = React.createClass({
 	renderUserPins: function(svg, projection) {
 		var instance = this;
 
+		var recruits = instance.props.recruits;
+
+		recruits = recruits.filter(
+			function(item) {
+				return item.geoPoints.length > 0;
+			}
+		);
+
 		svg.selectAll('.pin')
-			.data(instance.props.recruits).enter()
+			.data(recruits).enter()
 			.append('circle')
 				.attr('class', 'map-user')
 				.attr('r', 2.5)
