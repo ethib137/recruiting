@@ -57,7 +57,7 @@ path {
 }
 
 .liferay-office {
-	fill: $white;
+	fill: rgba($black, 0.7);
 	stroke: #233240;
 	stroke-width: 0.5px;
 	font-family: 'FontAwesome';

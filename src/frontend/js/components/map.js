@@ -67,21 +67,24 @@ module.exports = React.createClass({
 	renderLiferayOffices: function(svg, projection) {
 		var fontSize = 12;
 
-		// svg.selectAll('.pin')
-		// 	.data(LiferayOffices).enter()
-		// 	.append('text')
-		// 		.attr('class', 'liferay-office')
-		// 		.attr('font-size', fontSize)
-		// 		.text('\uf1ad' )
-		// 		.attr('transform', function(d) {
-		// 			d = [d[1], d[0]];
+		svg.selectAll('.pin')
+			.data(LiferayOffices).enter()
+			.append('text')
+				.attr('class', 'liferay-office')
+				.attr('font-size', fontSize)
+				.text('\uf276')
+				.attr(
+					'transform',
+					function(d) {
+					d = [d[1], d[0]];
 
-		// 			var xy = projection(d);
+					var xy = projection(d);
 
-		// 			xy = [xy[0] - (fontSize / 2), xy[1] + (fontSize / 2)]
+					xy = [xy[0] - (fontSize / 4), xy[1]]
 
-		// 			return 'translate(' + xy + ')';
-		// 		});
+					return 'translate(' + xy + ')';
+					}
+				);
 	},
 
 	renderMap: function(svg, projection) {
@@ -106,9 +109,9 @@ module.exports = React.createClass({
 			.data(instance.props.recruits).enter()
 			.append('circle')
 				.attr('class', 'map-user')
-				.attr('r', 2.5)
+				.attr('r', 1.5)
 				.attr('fill', '#FFFFFF')
-				.attr('opacity', '0.3')
+				.attr('opacity', '0.7')
 				.attr('id', function(d) {
 					return 'people' + d._id;
 				})
