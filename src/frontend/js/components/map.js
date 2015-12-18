@@ -67,21 +67,26 @@ module.exports = React.createClass({
 	renderLiferayOffices: function(svg, projection) {
 		var fontSize = 12;
 
-		// svg.selectAll('.pin')
-		// 	.data(LiferayOffices).enter()
-		// 	.append('text')
-		// 		.attr('class', 'liferay-office')
-		// 		.attr('font-size', fontSize)
-		// 		.text('\uf1ad' )
-		// 		.attr('transform', function(d) {
-		// 			d = [d[1], d[0]];
+		console.log('LiferayOffices', LiferayOffices);
 
-		// 			var xy = projection(d);
+		svg.selectAll('.pin')
+			.data(LiferayOffices).enter()
+			.append('text')
+				.attr('class', 'liferay-office')
+				.attr('font-size', fontSize)
+				.text('\uf276')
+				.attr(
+					'transform', 
+					function(d) {
+					d = [d[1], d[0]];
 
-		// 			xy = [xy[0] - (fontSize / 2), xy[1] + (fontSize / 2)]
+					var xy = projection(d);
 
-		// 			return 'translate(' + xy + ')';
-		// 		});
+					xy = [xy[0] - (fontSize / 4), xy[1]]
+
+					return 'translate(' + xy + ')';
+					}
+				);
 	},
 
 	renderMap: function(svg, projection) {
@@ -114,7 +119,7 @@ module.exports = React.createClass({
 			.data(recruits).enter()
 			.append('circle')
 				.attr('class', 'map-user')
-				.attr('r', 2.5)
+				.attr('r', 1.5)
 				.attr('transform', function(d) {
 					var arr = [d.geoPoints[1], d.geoPoints[0]];
 

@@ -39,6 +39,10 @@ module.exports = React.createClass({
 
 					<Map recruits={this.state.recruits}/>
 
+					<div className="map-legend">
+						<span><i className="fa fa-map-pin"></i>: Liferay Office Locations</span>
+					</div>
+
 					<div className="col-sm-2 side-bar right"></div>
 				</div>
 				<div ref="skillsBreakDownColumn" className="row side-bar bottom"></div>
