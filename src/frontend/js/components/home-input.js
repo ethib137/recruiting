@@ -7,36 +7,37 @@ module.exports = React.createClass({
 
 		var homeInput = this.refs.homeInput.getDOMNode();
 
-		$(homeInput).autocomplete({
-			source: function (request, response) {
-				$.getJSON(
-					"http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
-					function (data) {
-						response(data);
-					}
-				);
-			},
-			minLength: 3,
-			select: function (event, ui) {
-				var selectedObj = ui.item;
+		$(homeInput).autocomplete(
+			{
+				source: function(request, response) {
+					$.ajax({
+						url: '/api/cities',
+						dataType: "json",
+						data: request,
+						success: function(data) {
+							data.forEach(function(item, index) {
+								data[index].label = item.label + ', ' + item.state + ', ' + item.country;
+							});
 
-				$(homeInput).val(selectedObj.value);
+							response(data);
+						}
+					});
+				},
+				minLength: 1,
+				delay: 100,
+				select: function(event, ui) {
+					var item = ui.item;
 
-				var parent = instance.props.parent;
+					var parent = instance.props.parent;
 
-				var recruit = parent.state.recruit;
+					var recruit = parent.state.recruit;
 
-				recruit.home = selectedObj.value;
+					recruit.home = item.label;
 
-				parent.setState({recruit: recruit});
-			},
-			open: function () {
-				$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-			},
-			close: function () {
-				$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+					parent.setState({recruit: recruit});
+				}
 			}
-		 });
+		);
 	},
 
 	render: function() {
@@ -45,7 +46,7 @@ module.exports = React.createClass({
 		return (
 			<fieldset className="row form-group">
 				<label for="home">Where do you call home?</label>
-				<input ref="homeInput" type="text" className="form-control" name="home" placeholder="Portland, Oregon, USA" value={recruit.home} />
+				<input ref="homeInput" type="text" className="form-control" name="home" placeholder="Portland, OR, USA" value={recruit.home} />
 			</fieldset>
 		);
 	}

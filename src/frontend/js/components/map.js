@@ -87,7 +87,7 @@ module.exports = React.createClass({
 	renderMap: function(svg, projection) {
 		var instance = this;
 
-		d3.json('/staticFiles/world-110m.json', function(error, topology) {
+		d3.json('/documents/staticFiles/world-110m.json', function(error, topology) {
 			svg.selectAll('path')
 				.data(topojson.object(topology, topology.objects.countries).geometries).enter()
 				.append('g')

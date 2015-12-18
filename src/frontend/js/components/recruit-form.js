@@ -146,7 +146,8 @@ module.exports = React.createClass({
 				{
 					data: JSON.stringify(this.state.recruit),
 					success: function(response){
-						instance.history.pushState(null, successURL, {city: response.data.missionsCity});
+						console.log(response);
+						instance.history.pushState(null, successURL, {city: response.data.missionsLocation});
 					},
 					dataType: 'json',
 					contentType : 'application/json'
@@ -284,7 +285,7 @@ module.exports = React.createClass({
 
 						<div className="col-md-4">
 							<h3 className="skills-group">Skills</h3>
-							
+
 							<div className="form-card skills-group">
 								<SkillsInput recruit={recruit} parent={this} />
 								<SkillsInput recruit={recruit} parent={this} />

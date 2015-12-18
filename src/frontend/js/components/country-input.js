@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 var React = require('react');
-var GeoUtil = require ('countries-cities');
 
 module.exports = React.createClass({
 	componentDidMount: function() {
@@ -10,7 +9,7 @@ module.exports = React.createClass({
 
 		$(countryInput).autocomplete(
 			{
-				source: GeoUtil.getCountries(),
+				source: '/api/countries',
 				minLength: 1,
 				delay: 100,
 				select: function(event, ui) {
@@ -20,7 +19,7 @@ module.exports = React.createClass({
 
 					var recruit = parent.state.recruit;
 
-					recruit.missionsLocation = item.value;
+					recruit.missionsLocation = item.label;
 
 					parent.setState({recruit: recruit});
 				}

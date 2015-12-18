@@ -18,9 +18,6 @@ gulp.task('copy', function() {
 	gulp.src('src/frontend/js/*')
 		.pipe(gulp.dest('dist/frontend'));
 
-	gulp.src('src/frontend/staticFiles/*')
-		.pipe(gulp.dest('dist/frontend/staticFiles'));
-
 	gulp.src('src/frontend/css/*')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('dist/frontend/css'));

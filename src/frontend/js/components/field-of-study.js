@@ -7,33 +7,21 @@ module.exports = React.createClass({
 
 		var majorInput = this.refs.fieldOfStudy.getDOMNode();
 
-		$.ajax(
+		$(majorInput).autocomplete(
 			{
-				url: 'staticFiles/majors.json',
-				type: 'GET',
-				dataType: "json",
-				success: function(json) {
-					$(majorInput).autocomplete(
-						{
-							source: json,
-							minLength: 1,
-							delay: 100,
-							select: function(event, ui) {
-								var item = ui.item;
+				source: '/api/majors',
+				minLength: 1,
+				delay: 100,
+				select: function(event, ui) {
+					var item = ui.item;
 
-								var parent = instance.props.parent;
+					var parent = instance.props.parent;
 
-								var recruit = parent.state.recruit;
+					var recruit = parent.state.recruit;
 
-								recruit.fieldOfStudy = item.value;
+					recruit.fieldOfStudy = item.label;
 
-								parent.setState({recruit: recruit});
-							}
-						}
-					);
-				},
-				error: function(err) {
-					console.log('error', err);
+					parent.setState({recruit: recruit});
 				}
 			}
 		);

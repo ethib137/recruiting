@@ -16,7 +16,6 @@ var people = {
 	'home': String,
 	'isMale': Boolean,
 	'lastName': String,
-	'missionsCity': String,
 	'missionsLocation': String,
 	'portfolioSite' : String,
 	'profilePicture': String,
