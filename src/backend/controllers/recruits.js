@@ -64,11 +64,15 @@ module.exports = function(router) {
 							if (profilePicture) {
 								var imageBuffer = Utils.decodeBase64Image(profilePicture);
 
-								Utils.writeImage(imageBuffer, db._id, function() {
+								Utils.writeImage(imageBuffer, db._id, function(event) {
+									db.profilePicture = event;
+
 									callback(null, 1);
 								});
 							}
 							else {
+								db.profilePicture = '/documents/default_avatar.jpg';
+
 								callback(null, 1);
 							}
 						},
