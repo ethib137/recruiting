@@ -33,7 +33,7 @@ module.exports = {
 	},
 
 	writeImage: function(imageBuffer, fileName, callback) {
-		var userImageDirectory = path.join(__dirname, '../../documents/user-images');
+		var userImageDirectory = path.join(__dirname, '../../documents/user-images/');
 
 		mkdirp(userImageDirectory, function(err) {
 			if (err) {

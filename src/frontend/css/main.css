@@ -71,14 +71,14 @@ path {
 	font-family: 'FontAwesome';
 }
 
-.side-bar {
+.statistics {
 	border-radius: 10px;
 	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
 	color: $white;
 	padding: 12px 20px 6px 20px;
 	box-sizing: border-box;
 
-	&.left {
+	&.snapshot {
 		background-color: $yellow;
 		margin-top: 20px;
 
@@ -88,25 +88,43 @@ path {
 				padding-right: 12px;
 			}
 		}
+
+		.img-container {
+			height: 200px;
+			width: 200px;
+
+			img {
+				height: 200px;
+			}
+		}
 	}
 
-	&.right {
+	&.flags {
 		background-color: $green;
 		margin-top: 20px;
 		padding-bottom: 24px;
 	}
 
-	&.bottom {
+	&.gender-breakdown {
 		background-color: $red;
+		display: flex;
+		flex-wrap: wrap;
+
+		div:first-child {
+			flex: 1 0 100%;
+		}
 	}
 
-	.img-container {
-		height: 200px;
-		width: 200px;
+	&.one {
+		background-color: $green;
+	}
 
-		img {
-			height: 200px;
-		}
+	&.two {
+		background-color: $purple;
+	}
+
+	&.three {
+		background-color: $blue;
 	}
 }
 

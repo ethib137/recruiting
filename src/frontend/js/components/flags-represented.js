@@ -37,7 +37,7 @@ module.exports = React.createClass({
 		var instance = this;
 
 		return (
-			<div>
+			<div className="statistics flags">
 				<div>Countries Represented:</div>
 				<div className="flag-container">
 					{

@@ -72,7 +72,9 @@ module.exports = React.createClass({
 		}
 
 		return (
-			<div className="side-bar left">
+			<div className="snapshot statistics">
+				<div>Attendee Snapshot:</div>
+
 				<div className="img-container">
 					<img src={this.state.activeRecruit.profilePicture} />
 				</div>

@@ -4,6 +4,7 @@ var React = require('react');
 var Map = require('./map');
 var AttendeeSnapshot = require('./attendee-snapshot');
 var FlagsRepresented = require('./flags-represented');
+var GenderBreakdown = require('./gender-breakdown');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -37,20 +38,37 @@ module.exports = React.createClass({
 		return (
 			<div className="display-page">
 				<div className="row">
-					<div ref="attendeeBreakDown" className="col-sm-2">
+					<div className="col-sm-2">
 						<AttendeeSnapshot recruits={this.state.recruits} />
 					</div>
 
 					<Map recruits={this.state.recruits}/>
 
 					<div className="col-sm-2">
-						<div className="side-bar right">
-							<FlagsRepresented recruits={this.state.recruits} />
-						</div>
+						<FlagsRepresented recruits={this.state.recruits} />
 					</div>
 				</div>
 
-				<div ref="skillsBreakDownColumn" className="row side-bar bottom"></div>
+				<div ref="skillsBreakDownColumn" className="row">
+					<div className="col-sm-2">
+						<GenderBreakdown />
+					</div>
+
+					<div className="col-sm-4">
+						<div className="statistics one">
+						</div>
+					</div>
+
+					<div className="col-sm-3">
+						<div className="statistics two">
+						</div>
+					</div>
+
+					<div className="col-sm-3">
+						<div className="statistics three">
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
