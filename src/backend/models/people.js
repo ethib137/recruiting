@@ -13,7 +13,7 @@ var people = {
 	'fullName': String,
 	'githubUsername': String,
 	'gradTerm': String,
-	'home': String,
+	'home': Array,
 	'isMale': Boolean,
 	'lastName': String,
 	'missionsLocation': String,

@@ -39,11 +39,9 @@ module.exports = React.createClass({
 							.duration(2400)
 							.attr('r', 50)
 							.attr('fill', '#FFB700')
-							.attr('opacity', '1')
 							.transition()
 							.attr('fill', '#FFFFFF')
-							.attr('opacity', '0.3')
-							.attr('r', 2.5)
+							.attr('r', 1.5)
 					},
 					5000 * index
 				);

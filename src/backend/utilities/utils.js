@@ -21,7 +21,7 @@ module.exports = {
 
 	getGeoPoints: function(location, callback) {
 		geocoder.geocode(location, function(err, res) {
-			if (err) {
+			if (!res.length) {
 				res = [{latitude: null, longitude: null}];
 			}
 
@@ -33,14 +33,14 @@ module.exports = {
 	},
 
 	writeImage: function(imageBuffer, fileName, callback) {
-		var documentsDirectory = path.join(__dirname, '../../documents/');
+		var userImageDirectory = path.join(__dirname, '../../documents/user-images');
 
-		mkdirp(documentsDirectory, function(err) {
+		mkdirp(userImageDirectory, function(err) {
 			if (err) {
 				return;
 			}
 
-			var filePath = documentsDirectory + fileName + '.jpg'
+			var filePath = userImageDirectory + fileName + '.jpg'
 
 			fs.writeFile(filePath, imageBuffer.data, function(err) {});
 

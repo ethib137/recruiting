@@ -8,6 +8,25 @@ var Utils = require('../utilities/utils');
 var OBJ_ERROR = {'success': false, 'message': 'Unknown Error Occured'};
 
 module.exports = function(router) {
+	router.route('/api/recruits/countries')
+		.get(
+			function(req, res) {
+				peopleModal.find(
+					{},
+					function(err,data) {
+						var countriesRepped = [];
+
+						data.forEach(function(item) {
+							if (countriesRepped.indexOf(item.home[2]) === -1) {
+								countriesRepped.push(item.home[2]);
+							}
+						});
+
+						res.json(countriesRepped);
+					}
+				);
+			}
+		)
 	router.route('/api/recruits')
 		.get(
 			function(req, res) {
@@ -78,23 +97,30 @@ module.exports = function(router) {
 						},
 						function(callback){
 							var generateCityLocation = function(country) {
+								console.log(country);
+
 								countryModel.findOne(
 									{label:country},
 									function(err, data) {
-										cityModel.find(
-											{country: data.code[0]},
-											function(err, data) {
-												var city = data[Math.floor(Math.random()*data.length)];
+										if (data) {
+											cityModel.find(
+												{country: data.code[0]},
+												function(err, data) {
+													var city = data[Math.floor(Math.random()*data.length)];
 
-												db.missionsLocation = city.full;
+													db.missionsLocation = city.full;
 
-												Utils.getGeoPoints(city.full, function(event) {
-													db.geoPoints = event;
+													Utils.getGeoPoints(city.full, function(event) {
+														db.geoPoints = event;
 
-													callback(null, 2);
-												});
-											}
-										);
+														callback(null, 2);
+													});
+												}
+											);
+										}
+										else {
+											return;
+										}
 									}
 								);
 							}
@@ -107,7 +133,7 @@ module.exports = function(router) {
 									function(err, data) {
 										var country = data[Math.floor(Math.random()*data.length)];
 
-										generateCityLocation(country);
+										generateCityLocation(country.label);
 									}
 								);
 							}

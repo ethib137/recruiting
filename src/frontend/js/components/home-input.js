@@ -32,7 +32,7 @@ module.exports = React.createClass({
 
 					var recruit = parent.state.recruit;
 
-					recruit.home = item.label;
+					recruit.home = [item.label, item.state, item.country];
 
 					parent.setState({recruit: recruit});
 				}
