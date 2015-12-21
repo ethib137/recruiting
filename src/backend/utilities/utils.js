@@ -1,6 +1,5 @@
 var fs = require('fs');
 var geocoder = require('node-geocoder')('google', 'http', null);
-var GeoUtil = require ('countries-cities');
 var mkdirp = require('mkdirp');
 var path = require('path');
 
