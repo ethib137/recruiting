@@ -1,7 +1,7 @@
 var cityModel = require('../models/city');
 var countryModel = require('../models/country');
 
-var defaultDelta = 20;
+var defaultDelta = 10;
 
 module.exports = function(router) {
 	router.route('/api/cities')

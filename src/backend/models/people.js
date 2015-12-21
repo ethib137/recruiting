@@ -4,6 +4,7 @@ var mongoSchema = mongoose.Schema;
 
 var people = {
 	'geoPoints': Array,
+	'categoryOfStudy': String,
 	'comments': String,
 	'contactMe': Boolean,
 	'confirmEmail': String,

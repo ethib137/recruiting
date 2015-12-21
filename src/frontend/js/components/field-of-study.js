@@ -1,6 +1,10 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var toTitleCase = function(str) {
+	return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 module.exports = React.createClass({
 	componentDidMount: function() {
 		var instance = this;
@@ -10,6 +14,20 @@ module.exports = React.createClass({
 		$(majorInput).autocomplete(
 			{
 				source: '/api/majors',
+				source: function(request, response) {
+					$.ajax({
+						url: '/api/majors',
+						dataType: "json",
+						data: request,
+						success: function(data) {
+							data.forEach(function(item, index) {
+								data[index].label = toTitleCase(item.label);
+							});
+
+							response(data);
+						}
+					});
+				},
 				minLength: 1,
 				delay: 100,
 				select: function(event, ui) {
@@ -20,6 +38,7 @@ module.exports = React.createClass({
 					var recruit = parent.state.recruit;
 
 					recruit.fieldOfStudy = item.label;
+					recruit.categoryOfStudy = item.category;
 
 					parent.setState({recruit: recruit});
 				}

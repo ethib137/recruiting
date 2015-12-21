@@ -115,8 +115,30 @@ path {
 		}
 	}
 
-	&.one {
+	&.study-breakdown {
 		background-color: $green;
+		overflow: hidden;
+
+		.bar-container {
+			margin-bottom: 10px;
+			display: flex;
+		}
+
+		.bar {
+			background-color: $white;
+			border-radius: 10px;
+			flex: 1;
+			color: #233240;
+			overflow: hidden;
+			padding-left: 12px;
+			position: relative;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.total {
+			padding-left: 4px;
+		}
 	}
 
 	&.two {

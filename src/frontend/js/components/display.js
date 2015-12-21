@@ -5,6 +5,7 @@ var Map = require('./map');
 var AttendeeSnapshot = require('./attendee-snapshot');
 var FlagsRepresented = require('./flags-represented');
 var GenderBreakdown = require('./gender-breakdown');
+var StudyCategoryBreakdown = require('./category-of-study-breakdown');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -50,22 +51,21 @@ module.exports = React.createClass({
 				</div>
 
 				<div ref="skillsBreakDownColumn" className="row">
+					<div className="col-sm-4">
+						<div className="statistics three">
+						</div>
+					</div>
+
 					<div className="col-sm-2">
 						<GenderBreakdown />
 					</div>
 
-					<div className="col-sm-4">
-						<div className="statistics one">
-						</div>
+					<div className="col-sm-3">
+						<StudyCategoryBreakdown recruits={this.state.recruits} />
 					</div>
 
 					<div className="col-sm-3">
 						<div className="statistics two">
-						</div>
-					</div>
-
-					<div className="col-sm-3">
-						<div className="statistics three">
 						</div>
 					</div>
 				</div>
