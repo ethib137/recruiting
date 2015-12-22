@@ -41,6 +41,16 @@ var LiferayOffices = [
 ];
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
+	getInitialState: function() {
+		return {
+			recruits: this.context.store.getState()
+		}
+	},
+
 	componentDidUpdate: function() {
 		var instance = this;
 
@@ -106,7 +116,7 @@ module.exports = React.createClass({
 		var instance = this;
 
 		svg.selectAll('.pin')
-			.data(instance.props.recruits).enter()
+			.data(instance.state.recruits).enter()
 			.append('circle')
 				.attr('class', 'map-user')
 				.attr('r', 1.5)
