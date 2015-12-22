@@ -13,18 +13,6 @@ module.exports = React.createClass({
 		};
 	},
 
-	componentDidMount: function() {
-		var instance = this;
-
-		var store = this.context.store;
-
-		store.subscribe(function() {
-			var storeData = store.getState();
-
-			instance.processSkills(storeData.recruits);
-		});
-	},
-
 	componentDidUpdate: function() {
 		this.renderD3();
 	},

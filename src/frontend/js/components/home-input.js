@@ -1,7 +1,19 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var setRecruit = require('../redux/actions/set-recruit');
+
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
+	getInitialState: function() {
+		return {
+			recruit: this.context.store.getState()
+		}
+	},
+
 	componentDidMount: function() {
 		var instance = this;
 
@@ -28,24 +40,28 @@ module.exports = React.createClass({
 				select: function(event, ui) {
 					var item = ui.item;
 
-					var parent = instance.props.parent;
-
-					var recruit = parent.state.recruit;
+					var recruit = instance.state.recruit;
 
 					recruit.home = [item.label, item.state, item.country];
 
-					parent.setState({recruit: recruit});
+					instance.setState({recruit: recruit});
 				}
 			}
 		);
 	},
 
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+	},
+
 	render: function() {
-		var recruit = this.props.recruit;
+		var recruit = this.state.recruit;
 
 		return (
 			<fieldset className="row form-group">
-				<label for="home">Where do you call home?</label>
+				<label htmlFor="home">Where do you call home?</label>
 				<input ref="homeInput" type="text" className="form-control" name="home" placeholder="Portland, OR, USA" value={recruit.home} />
 			</fieldset>
 		);

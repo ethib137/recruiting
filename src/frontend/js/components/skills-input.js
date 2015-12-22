@@ -1,7 +1,19 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var setRecruit = require('../redux/actions/set-recruit');
+
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
+	getInitialState: function() {
+		return {
+			recruit: this.context.store.getState()
+		}
+	},
+
 	componentDidMount: function() {
 		var instance = this;
 
@@ -49,7 +61,7 @@ module.exports = React.createClass({
 						instance.postNewSkill(item);
 					}
 					else {
-						instance.props.parent.addSkill(item);
+						instance.addSkill(item);
 					}
 
 					$(this).val('');
@@ -66,6 +78,39 @@ module.exports = React.createClass({
 		};
 	},
 
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+	},
+
+	addSkill: function(skill) {
+		var recruit = this.state.recruit;
+
+		recruit.skills.push(skill);
+
+		this.setState({recruit: recruit});
+	},
+
+	removeSkill: function(event) {
+		var target = event.target;
+
+		var id = target.getAttribute('data-id');
+
+		var recruit = this.state.recruit;
+
+		$.grep(
+			recruit.skills,
+			function(item, index) {
+				if (item._id == id) {
+					recruit.skills.splice(index,1);
+				}
+			}
+		);
+
+		this.setState({recruit: recruit});
+	},
+
 	postNewSkill: function(item) {
 		var instance = this;
 
@@ -76,7 +121,7 @@ module.exports = React.createClass({
 				dataType: "json",
 				data: {label: item.value},
 				success: function(response) {
-					instance.props.parent.addSkill(response.data);
+					instance.addSkill(response.data);
 				},
 				error: function(err) {
 					console.log('error', err);
@@ -88,11 +133,11 @@ module.exports = React.createClass({
 	render: function() {
 		var instance = this;
 
-		var recruit = this.props.recruit;
+		var recruit = this.state.recruit;
 
 		return (
 			<fieldset className="row form-group">
-				<label for="skillsInput">Know any sweet skills or languages?</label>
+				<label htmlFor="skillsInput">Know any sweet skills or languages?</label>
 				<div className="form-control">
 				{
 					recruit.skills.map(
@@ -100,7 +145,7 @@ module.exports = React.createClass({
 							return (
 								<span className="skill-pill" key={skill._id}>
 									{skill.label}
-									<button data-id={skill._id} onClick={instance.props.parent.removeSkill} type="button" className="close">
+									<button data-id={skill._id} onClick={instance.removeSkill} type="button" className="close">
 										<span aria-hidden="true">&times;</span>
 										<span className="sr-only">Close</span>
 									</button>

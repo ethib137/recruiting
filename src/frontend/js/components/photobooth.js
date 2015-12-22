@@ -1,17 +1,24 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var setRecruit = require('../redux/actions/set-recruit');
+
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
 			autoplay: true,
 			showVideo: true,
-			countdown: null
+			countdown: null,
+			recruit: this.context.store.getState()
 		}
 	},
 
 	componentDidMount: function() {
-		var recruit = this.props.recruit;
+		var recruit = this.state.recruit;
 
 		if (!recruit._id) {
 			this.canvasNode = this.refs.imageCanvas;
@@ -45,6 +52,12 @@ module.exports = React.createClass({
 		}
 	},
 
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+	},
+
 	takePhoto: function() {
 		var instance = this;
 
@@ -56,13 +69,11 @@ module.exports = React.createClass({
 
 		this.refs.imageDataInput.value = imageData;
 
-		var parent = instance.props.parent;
-
-		var recruit = parent.state.recruit;
+		var recruit = instance.state.recruit;
 
 		recruit.profilePicture = imageData;
 
-		parent.setState({recruit: recruit});
+		instance.setState({recruit: recruit});
 
 		this.setState({showVideo: false});
 	},
@@ -100,7 +111,7 @@ module.exports = React.createClass({
 	},
 
 	render: function() {
-		var recruit = this.props.recruit;
+		var recruit = this.state.recruit;
 
 		if (recruit._id) {
 			return (
@@ -115,7 +126,7 @@ module.exports = React.createClass({
 			if (this.state.showVideo) {
 				videoDisplay = (
 					<div>
-						<video ref="webcamDisplay" width="320" height="240" autoplay={this.state.autoplay} src={recruit.profilePicture}></video>
+						<video ref="webcamDisplay" width="320" height="240" autoPlay={this.state.autoplay} src={recruit.profilePicture}></video>
 						<div className="photo-countdown" ref="photoCountdown">{this.state.countdown}</div>
 					</div>
 				);
@@ -128,7 +139,7 @@ module.exports = React.createClass({
 						<canvas ref="imageCanvas" hidden={this.state.showVideo} width="320" height="240"></canvas>
 					</div>
 
-					<label for="profilePicture">Take a picture so we can remember you!</label>
+					<label htmlFor="profilePicture">Take a picture so we can remember you!</label>
 					<input ref="imageDataInput" type="hidden" name="profilePicture" />
 
 					<div className="">

@@ -1,11 +1,11 @@
 var io = require('socket.io-client');
 var Redux = require('redux');
 
-var RecruitReducer = require('./reducer.js');
+var DisplayReducer = require('./display-reducer.js');
 
 var createStore = Redux.createStore;
 
-var store = createStore(RecruitReducer);
+var store = createStore(DisplayReducer);
 
 module.exports = store;
 

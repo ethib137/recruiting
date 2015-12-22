@@ -10,19 +10,50 @@ var Admin = require('./components/admin.js');
 var Success = require('./components/success.js');
 var Display = require('./components/display.js');
 
-var Store = require('./redux/store');
+var DisplayStore = require('./redux/display-store');
+var FormStore = require('./redux/form-store');
+
+var form = React.createClass({
+	render: function() {
+		return (
+			<Provider store={FormStore} >
+				<Form />
+			</Provider>
+		);
+	}
+});
+
+var admin = React.createClass({
+	render: function() {
+		return (
+			<Provider store={DisplayStore} >
+				<Admin />
+			</Provider>
+		);
+	}
+});
+
+var display = React.createClass({
+	render: function() {
+		return (
+			<Provider store={DisplayStore} >
+				<Display />
+			</Provider>
+		);
+	}
+});
 
 ReactDom.render(
 	(
-		<Provider store={Store} >
 			<Router>
-				<Route name="form" path="/form" component={Form}/>
-				<Route name="admin" path="/admin" component={Admin}/>
-				<Route name="edit" path="/edit/:id" component={Form}/>
+				<Route name="edit" path="/edit/:id" component={form}/>
+				<Route name="form" path="/form" component={form}/>
+
 				<Route name="success" path="/success" component={Success}/>
-				<Route name="display" path="/display" component={Display}/>
+
+				<Route name="admin" path="/admin" component={admin}/>
+				<Route name="display" path="/display" component={display}/>
 			</Router>
-		</Provider>
 	),
 	document.getElementById('mainContent')
 );

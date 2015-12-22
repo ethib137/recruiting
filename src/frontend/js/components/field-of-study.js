@@ -5,7 +5,19 @@ var toTitleCase = function(str) {
 	return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
+var setRecruit = require('../redux/actions/set-recruit');
+
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
+	getInitialState: function() {
+		return {
+			recruit: this.context.store.getState()
+		}
+	},
+
 	componentDidMount: function() {
 		var instance = this;
 
@@ -33,25 +45,29 @@ module.exports = React.createClass({
 				select: function(event, ui) {
 					var item = ui.item;
 
-					var parent = instance.props.parent;
-
-					var recruit = parent.state.recruit;
+					var recruit = instance.state.recruit;
 
 					recruit.fieldOfStudy = item.label;
 					recruit.categoryOfStudy = item.category;
 
-					parent.setState({recruit: recruit});
+					instance.setState({recruit: recruit});
 				}
 			}
 		);
 	},
 
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+	},
+
 	render: function() {
-		var recruit = this.props.recruit;
+		var recruit = this.state.recruit;
 
 		return (
 			<fieldset className="row form-group">
-				<label for="fieldOfStudy">Undergraduate Major</label>
+				<label htmlFor="fieldOfStudy">Undergraduate Major</label>
 				<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Greek" value={recruit.fieldOfStudy} />
 			</fieldset>
 		);

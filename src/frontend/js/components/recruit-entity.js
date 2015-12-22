@@ -55,7 +55,7 @@ module.exports = React.createClass({
 					<img className="card-img-top" src={recruit.profilePicture} />
 					<form action="" className="card-block" onSubmit={this.onSubmit} onChange={this.onInputChange}>
 						<fieldset className="form-group">
-							<label for="rating">Rating</label>
+							<label htmlFor="rating">Rating</label>
 							<select className="form-control" name="rating" defaultValue={recruit.rating}>
 								<option>-</option>
 								<option>+</option>
@@ -64,7 +64,7 @@ module.exports = React.createClass({
 						</fieldset>
 
 						<fieldset className="form-group">
-							<label for="comments">Comments</label>
+							<label htmlFor="comments">Comments</label>
 							<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
 							<button className="btn btn-primary" type="submit">Submit</button>
 						</fieldset>

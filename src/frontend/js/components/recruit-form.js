@@ -9,96 +9,26 @@ var SkillsInput = require('./skills-input');
 var VideoInput = require('./photobooth');
 
 var History = require('react-router').History;
-var Link = require('react-router').Link
+var Link = require('react-router').Link;
+
+var setRecruit = require('../redux/actions/set-recruit');
 
 module.exports = React.createClass({
 	mixins: [History],
+	contextTypes: {
+		store: React.PropTypes.object
+	},
 
 	getInitialState: function() {
-		var props = this.props;
-
-		if (props.params.id) {
-			return {
-				autoplay: false,
-				showVideo: false,
-				edit: true,
-				recruit: props.location.state
-			};
-		}
-		else {
-			return {
-				autoplay: true,
-				showVideo: true,
-				countdown: null,
-				recruit: {
-					comments: null,
-					confirmEmail: null,
-					contactMe: true,
-					email: null,
-					exampleCodeSnippet: null,
-					fieldOfStudy: null,
-					firstName: null,
-					fullName: null,
-					githubUsername: null,
-					gradTerm: null,
-					home: null,
-					isMale: true,
-					lastName: null,
-					missionsLocation: null,
-					portfolioSite: null,
-					profilePicture: null,
-					rating: 0,
-					school: null,
-					skills: []
-				}
-			};
+		return {
+			recruit: this.context.store.getState()
 		}
 	},
 
-	componentDidMount: function() {
-		var id = this.props.params.id;
-
-		// if (id) {
-		// 	$.get(
-		// 	'/api/recruits/' + id,
-		// 	function(data){
-		// 		this.setState(
-		// 			{
-		// 				autoplay: false,
-		// 				showVideo: false,
-		// 				edit: true,
-		// 				recruit: data
-		// 			}
-		// 		);
-		// 	}.bind(this));
-		// }
-	},
-
-	addSkill: function(skill) {
+	componentDidUpdate: function() {
 		var recruit = this.state.recruit;
 
-		recruit.skills.push(skill);
-
-		this.setState({recruit: recruit});
-	},
-
-	removeSkill: function(event) {
-		var target = event.target;
-
-		var id = target.getAttribute('data-id');
-
-		var recruit = this.state.recruit;
-
-		$.grep(
-			recruit.skills,
-			function(item, index) {
-				if (item._id == id) {
-					recruit.skills.splice(index,1);
-				}
-			}
-		);
-
-		this.setState({recruit: recruit});
+		this.context.store.dispatch(setRecruit(recruit));
 	},
 
 	onInputChange: function(event) {
@@ -161,7 +91,7 @@ module.exports = React.createClass({
 		var adminInputs;
 		var adminToolbar;
 
-		if (this.props.params.id) {
+		if (this.props.params && this.props.params.id) {
 			adminInputs = (
 				<div className="admin-only row">
 					<h3 className="admin-only">Admin</h3>
@@ -169,14 +99,14 @@ module.exports = React.createClass({
 					<div className="admin-only form-card">
 							<div className="col-md-8">
 								<fieldset className="form-group">
-									<label for="comments">Comments</label>
+									<label htmlFor="comments">Comments</label>
 									<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
 								</fieldset>
 							</div>
 
 							<div className="col-md-4">
 								<fieldset className="form-group">
-									<label for="rating">Rating</label>
+									<label htmlFor="rating">Rating</label>
 									<select className="form-control" name="rating" defaultValue={recruit.rating}>
 										<option>-</option>
 										<option>+</option>
@@ -199,7 +129,7 @@ module.exports = React.createClass({
 				<form action="" onSubmit={this.onSubmit} onChange={this.onInputChange}>
 					<div className="row">
 						<div className="col-md-4">
-							<VideoInput recruit={recruit} parent={this} />
+							<VideoInput />
 						</div>
 
 						<div className="col-md-8">
@@ -209,22 +139,22 @@ module.exports = React.createClass({
 								<div className="row">
 									<div className="col-md-4">
 										<fieldset className="row form-group">
-											<label for="firstName">First Name</label>
+											<label htmlFor="firstName">First Name</label>
 											<small className="text-muted">(Required)</small>
 											<input type="text" className="form-control" name="firstName" placeholder="Jim" value={recruit.firstName} />
 										</fieldset>
 									</div>
 									<div className="col-md-4">
 										<fieldset className="row form-group">
-											<label for="lastName">Last Name</label>
+											<label htmlFor="lastName">Last Name</label>
 											<small className="text-muted">(Required)</small>
 											<input type="text" className="form-control" name="lastName" placeholder="Elliot" value={recruit.lastName} />
 										</fieldset>
 									</div>
 
 									<fieldset className="col-md-4 form-group">
-										<label for="isMale">Gender</label>
-										<div class="radio">
+										<label htmlFor="isMale">Gender</label>
+										<div className="radio">
 											<label className="col-md-6">
 												<input type="radio" name="isMale" id="isMale1" defaultChecked={recruit.isMale} value="true" />
 												Male
@@ -240,14 +170,14 @@ module.exports = React.createClass({
 								<div className="row">
 									<div className="col-md-4">
 										<fieldset className="row form-group">
-											<label for="email">Email</label>
+											<label htmlFor="email">Email</label>
 											<small className="text-muted">(Required)</small>
 											<input type="text" className="form-control" name="email" placeholder="jim.elliot@gmail.com" value={recruit.email} />
 										</fieldset>
 									</div>
 									<div className="col-md-4">
 										<fieldset className="row form-group">
-											<label for="confirmEmail">Confirm Email</label>
+											<label htmlFor="confirmEmail">Confirm Email</label>
 											<small className="text-muted">(Required)</small>
 											<input type="text" className="form-control" name="confirmEmail" placeholder="jim.elliot@gmail.com" value={recruit.confirmEmail} />
 										</fieldset>
@@ -256,10 +186,10 @@ module.exports = React.createClass({
 
 								<div className="row">
 									<div className="col-md-6">
-										<HomeInput recruit={recruit} parent={this} />
+										<HomeInput />
 									</div>
 									<div className="col-md-6">
-										<MissionsInput recruit={recruit} parent={this} />
+										<MissionsInput />
 									</div>
 								</div>
 							</div>
@@ -272,13 +202,13 @@ module.exports = React.createClass({
 
 							<div className="form-card education">
 								<fieldset className="row form-group">
-									<label for="school">School</label><small className="text-muted">(Only if applicable)</small>
+									<label htmlFor="school">School</label><small className="text-muted">(Only if applicable)</small>
 									<input type="text" className="form-control" name="school" placeholder="Wheaton College" value={recruit.school} />
 								</fieldset>
 
-								<FieldOfStudyInput recruit={recruit} parent={this} />
+								<FieldOfStudyInput />
 
-								<GradTermInput recruit={recruit} parent={this} />
+								<GradTermInput />
 							</div>
 						</div>
 
@@ -286,8 +216,8 @@ module.exports = React.createClass({
 							<h3 className="skills-group">Skills</h3>
 
 							<div className="form-card skills-group">
-								<SkillsInput recruit={recruit} parent={this} />
-								<SkillsInput recruit={recruit} parent={this} />
+								<SkillsInput />
+								<SkillsInput />
 							</div>
 
 							<fieldset className="row form-group contact-me">
@@ -303,12 +233,12 @@ module.exports = React.createClass({
 
 							<div className="form-card elsewhere">
 								<fieldset className="row form-group">
-									<label for="githubUsername">Github Username</label>
+									<label htmlFor="githubUsername">Github Username</label>
 									<input type="text" className="form-control" name="githubUsername" placeholder="https://github.com/Corge" value={recruit.githubUsername} />
 								</fieldset>
 
 								<fieldset className="row form-group">
-									<label for="portfolioSite">Portfolio Site</label>
+									<label htmlFor="portfolioSite">Portfolio Site</label>
 									<input type="text" className="form-control" name="portfolioSite" placeholder="https://myPortfolio.com/" value={recruit.portfolioSite} />
 								</fieldset>
 							</div>
