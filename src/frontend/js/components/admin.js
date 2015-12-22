@@ -4,15 +4,29 @@ var React = require('react');
 var Recruit = require('./recruit-entity.js');
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
-			recruits: [],
+			recruits: this.context.store.getState() || [],
 			showAll: false
 		};
 	},
 
 	componentDidMount: function() {
-		this.getRecruits();
+		var instance = this;
+
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			var recruits = store.getState();
+
+			if (recruits.length) {
+				instance.setState({recruits: recruits});
+			}
+		});
 	},
 
 	handleNewTab: function() {
@@ -91,23 +105,6 @@ module.exports = React.createClass({
 					instance.setState({recruits: recruits})
 				},
 				data: JSON.stringify({rating: ratingValue}),
-				dataType: 'json',
-				contentType : 'application/json'
-			}
-		);
-	},
-
-	getRecruits: function(filter) {
-		var instance = this;
-
-		$.ajax(
-			{
-				type: 'GET',
-				url: '/api/recruits',
-				success: function(response){
-					instance.setState({recruits: response});
-				},
-				data: filter,
 				dataType: 'json',
 				contentType : 'application/json'
 			}

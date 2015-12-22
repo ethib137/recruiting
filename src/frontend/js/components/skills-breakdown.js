@@ -2,6 +2,10 @@
 var React = require('react');
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
 			maxSize: 0,
@@ -10,26 +14,19 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.getRecruits();
-	},
-
-	getRecruits: function() {
 		var instance = this;
 
-		$.ajax(
-			{
-				type: 'GET',
-				url: '/api/recruits',
-				success: function(response){
-					instance.processSkills(response);
-				},
-				data: {
-					delta: 0
-				},
-				dataType: 'json',
-				contentType : 'application/json'
-			}
-		);
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			var recruits = store.getState();
+
+			instance.processSkills(recruits);
+		});
+	},
+
+	componentDidUpdate: function() {
+		this.renderD3();
 	},
 
 	processSkills: function(response) {
@@ -70,9 +67,7 @@ module.exports = React.createClass({
 			}
 		});
 
-		instance.setState({skills: skillsArray, maxSize: maxSize}, function() {
-			instance.renderD3();
-		});
+		instance.setState({skills: skillsArray, maxSize: maxSize});
 	},
 
 	renderD3: function() {

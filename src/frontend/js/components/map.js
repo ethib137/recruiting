@@ -51,10 +51,18 @@ module.exports = React.createClass({
 		}
 	},
 
-	componentDidUpdate: function() {
+	componentDidMount: function() {
 		var instance = this;
 
-		instance.renderD3();
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			instance.setState({recruits: store.getState()});
+		});
+	},
+
+	componentDidUpdate: function() {
+		this.renderD3();
 	},
 
 	renderD3: function() {

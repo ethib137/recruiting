@@ -2,6 +2,10 @@
 var React = require('react');
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
 			categories: []
@@ -9,55 +13,46 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.getGenders();
-	},
-
-	getGenders: function() {
 		var instance = this;
 
-		$.ajax(
-			{
-				type: 'GET',
-				url: '/api/recruits',
-				success: function(response){
-					var categoryObj = {};
+		var store = this.context.store;
 
-					response.forEach(function(item) {
-						var category = item.categoryOfStudy;
+		store.subscribe(function() {
+			var recruits = store.getState();
 
-						if (category) {
-							var categoryInObj = categoryObj[category];
+			if (recruits.length) {
+				var categoryObj = {};
 
-							if (categoryInObj) {
-								categoryInObj += 1;
-							}
-							else {
-								categoryInObj = 1;
-							}
+				recruits.forEach(function(item) {
+					var category = item.categoryOfStudy;
 
-							categoryObj[category] = categoryInObj;
+					if (category) {
+						var categoryInObj = categoryObj[category];
+
+						if (categoryInObj) {
+							categoryInObj += 1;
 						}
-					});
+						else {
+							categoryInObj = 1;
+						}
 
-					var categoryArr = [];
+						categoryObj[category] = categoryInObj;
+					}
+				});
 
-					$.each(categoryObj, function(key, val) {
-						categoryArr.push([key, val]);
-					})
+				var categoryArr = [];
 
-					categoryArr.sort(function(a, b) {
-						return b[1] - a[1];
-					});
+				$.each(categoryObj, function(key, val) {
+					categoryArr.push([key, val]);
+				})
 
-					instance.setState({categories: categoryArr.slice(0, 8)});
-				},
-				data: {
-					delta: 0
-				},
-				dataType: 'json',
-				contentType : 'application/json'
+				categoryArr.sort(function(a, b) {
+					return b[1] - a[1];
+				});
+
+				instance.setState({categories: categoryArr.slice(0, 8)});
 			}
-		);
+		});
 	},
 
 	render: function() {
@@ -88,7 +83,7 @@ module.exports = React.createClass({
 								};
 
 								return (
-									<div className="bar-container" style={style}>
+									<div className="bar-container" style={style} key={category[0]}>
 										<div className="bar">
 											{category[0]}
 										</div>

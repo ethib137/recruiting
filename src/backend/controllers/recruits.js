@@ -17,8 +17,10 @@ module.exports = function(router, io) {
 						var countriesRepped = [];
 
 						data.forEach(function(item) {
-							if (countriesRepped.indexOf(item.home[2]) === -1) {
-								countriesRepped.push(item.home[2]);
+							var home = item.home;
+
+							if (home && home[2] && countriesRepped.indexOf(home[2]) === -1) {
+								countriesRepped.push(home[2]);
 							}
 						});
 

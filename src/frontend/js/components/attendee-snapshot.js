@@ -2,25 +2,36 @@
 var React = require('react');
 
 module.exports = React.createClass({
-	getInitialState: function() {
-		return {
-			activeRecruit: {},
-			allRecruits: []
-		};
+	contextTypes: {
+		store: React.PropTypes.object
 	},
-	componentWillReceiveProps: function(event) {
+
+	getInitialState: function() {
+		var recruits = this.context.store.getState();
+
+		return {
+			activeRecruit: recruits[0] || {},
+			allRecruits: recruits || []
+		}
+	},
+
+	componentDidMount: function() {
 		var instance = this;
 
-		var recruits = event.recruits;
+		var store = this.context.store;
 
-		if (recruits.length) {
-			this.setState({
-				activeRecruit: recruits[0],
-				allRecruits: recruits
-			}, function() {
+		store.subscribe(function() {
+			var recruits = store.getState();
+
+			if (recruits.length) {
+				instance.setState({
+					activeRecruit: recruits[0],
+					allRecruits: recruits
+				});
+
 				instance.cycleRecruits();
-			});
-		}
+			}
+		});
 	},
 
 	cycleRecruits: function() {

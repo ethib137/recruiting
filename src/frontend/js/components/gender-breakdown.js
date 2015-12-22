@@ -2,6 +2,10 @@
 var React = require('react');
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
 			men: 0,
@@ -10,42 +14,33 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.getGenders();
+		var instance = this;
+
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			var recruits = store.getState();
+
+			if (recruits.length) {
+				var men = 0;
+				var women = 0;
+
+				recruits.forEach(function(item) {
+					if (item.isMale) {
+						men += 1;
+					}
+					else {
+						women += 1;
+					}
+				});
+
+				instance.setState({men: men, women: women});
+			}
+		});
 	},
 
 	componentDidUpdate: function() {
 		this.renderD3();
-	},
-
-	getGenders: function() {
-		var instance = this;
-
-		$.ajax(
-			{
-				type: 'GET',
-				url: '/api/recruits',
-				success: function(response){
-					var men = 0;
-					var women = 0;
-
-					response.forEach(function(item) {
-						if (item.isMale) {
-							men += 1;
-						}
-						else {
-							women += 1;
-						}
-					});
-
-					instance.setState({men: men, women: women});
-				},
-				data: {
-					delta: 0
-				},
-				dataType: 'json',
-				contentType : 'application/json'
-			}
-		);
 	},
 
 	renderD3: function() {

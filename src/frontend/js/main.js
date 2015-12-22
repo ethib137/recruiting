@@ -10,7 +10,7 @@ var Admin = require('./components/admin.js');
 var Success = require('./components/success.js');
 var Display = require('./components/display.js');
 
-var Store = require('./store/recruits');
+var Store = require('./redux/store');
 
 ReactDom.render(
 	(

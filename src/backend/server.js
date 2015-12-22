@@ -3,7 +3,7 @@ var express  = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
 
-mongoose.connect('mongodb://localhost:27017/recruiting');
+mongoose.connect('mongodb://localhost:27017/recruitingBlank');
 
 require('./utilities/data-import')();
 
@@ -28,7 +28,7 @@ require('./controllers/skills')(router);
 
 app.use('/', router);
 
-require('./utilities/import-socket')(io);
+require('./utilities/load-socket-data')(io);
 
 http.listen(3000, function(){
 	console.log('listening on *:3000');
