@@ -1,10 +1,9 @@
 /** @jsx React.DOM */
 var React = require('react');
+var ReactDom = require('react-dom');
 var Router = require('react-router').Router
 var Route = require('react-router').Route
-
 var Provider = require('react-redux').Provider;
-
 
 var Form = require('./components/recruit-form.js');
 var Admin = require('./components/admin.js');
@@ -13,7 +12,7 @@ var Display = require('./components/display.js');
 
 var Store = require('./store/recruits');
 
-React.render(
+ReactDom.render(
 	(
 		<Provider store={Store} >
 			<Router>

@@ -7,7 +7,7 @@ var Utils = require('../utilities/utils');
 
 var OBJ_ERROR = {'success': false, 'message': 'Unknown Error Occured'};
 
-module.exports = function(router) {
+module.exports = function(router, io) {
 	router.route('/api/recruits/countries')
 		.get(
 			function(req, res) {
@@ -97,8 +97,6 @@ module.exports = function(router) {
 						},
 						function(callback){
 							var generateCityLocation = function(country) {
-								console.log(country);
-
 								countryModel.findOne(
 									{label:country},
 									function(err, data) {
@@ -155,6 +153,8 @@ module.exports = function(router) {
 								}
 
 								res.json(response);
+
+								io.emit('newRecruit', db);
 							}
 						);
 					});

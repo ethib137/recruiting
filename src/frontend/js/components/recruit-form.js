@@ -146,7 +146,6 @@ module.exports = React.createClass({
 				{
 					data: JSON.stringify(this.state.recruit),
 					success: function(response){
-						console.log(response);
 						instance.history.pushState(null, successURL, {city: response.data.missionsLocation});
 					},
 					dataType: 'json',

@@ -9,6 +9,9 @@ require('./utilities/data-import')();
 
 var app = express();
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended' : false}));
 
@@ -20,10 +23,13 @@ var router = express.Router();
 require('./controllers/base')(router);
 require('./controllers/geodata')(router);
 require('./controllers/majors')(router);
-require('./controllers/recruits')(router);
+require('./controllers/recruits')(router, io);
 require('./controllers/skills')(router);
 
 app.use('/', router);
 
-app.listen(3000);
-console.log('Listening to PORT 3000');
+require('./utilities/import-socket')(io);
+
+http.listen(3000, function(){
+	console.log('listening on *:3000');
+});
