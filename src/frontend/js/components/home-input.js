@@ -5,7 +5,7 @@ module.exports = React.createClass({
 	componentDidMount: function() {
 		var instance = this;
 
-		var homeInput = this.refs.homeInput.getDOMNode();
+		var homeInput = this.refs.homeInput;
 
 		$(homeInput).autocomplete(
 			{

@@ -9,7 +9,7 @@ module.exports = React.createClass({
 	componentDidMount: function() {
 		var instance = this;
 
-		var majorInput = this.refs.fieldOfStudy.getDOMNode();
+		var majorInput = this.refs.fieldOfStudy;
 
 		$(majorInput).autocomplete(
 			{

@@ -73,7 +73,7 @@ module.exports = React.createClass({
 	renderD3: function() {
 		var instance = this;
 
-		$(instance.refs.attendeeBreakDown.getDOMNode()).html('');
+		$(instance.refs.attendeeBreakDown).html('');
 
 		var height = 300;
 		var width = 475;
@@ -87,7 +87,7 @@ module.exports = React.createClass({
 			.range([6, 30]);
 
 		var draw = function(words) {
-			d3.select(instance.refs.attendeeBreakDown.getDOMNode()).append('svg')
+			d3.select(instance.refs.attendeeBreakDown).append('svg')
 				.attr('width', width)
 				.attr('height', height)
 				.append('g')

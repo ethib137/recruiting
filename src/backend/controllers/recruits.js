@@ -108,6 +108,8 @@ module.exports = function(router, io) {
 												function(err, data) {
 													var city = data[Math.floor(Math.random()*data.length)];
 
+													console.log(city);
+
 													db.missionsLocation = city.full;
 
 													Utils.getGeoPoints(city.full, function(event) {

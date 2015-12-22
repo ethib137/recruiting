@@ -14,8 +14,8 @@ module.exports = React.createClass({
 		var recruit = this.props.recruit;
 
 		if (!recruit._id) {
-			this.canvasNode = this.refs.imageCanvas.getDOMNode();
-			var videoDisplay = this.refs.webcamDisplay.getDOMNode();
+			this.canvasNode = this.refs.imageCanvas;
+			var videoDisplay = this.refs.webcamDisplay;
 
 			this.videoDisplay = videoDisplay;
 
@@ -54,7 +54,7 @@ module.exports = React.createClass({
 
 		var imageData = this.canvasNode.toDataURL('image/jpeg');
 
-		this.refs.imageDataInput.getDOMNode().value = imageData;
+		this.refs.imageDataInput.value = imageData;
 
 		var parent = instance.props.parent;
 
@@ -70,7 +70,7 @@ module.exports = React.createClass({
 	handleSnapPhoto: function() {
 		var instance = this;
 
-		var countdownNode = this.refs.photoCountdown.getDOMNode();
+		var countdownNode = this.refs.photoCountdown;
 
 		instance.setState({countdown: 3});
 

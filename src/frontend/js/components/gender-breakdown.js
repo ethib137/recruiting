@@ -44,7 +44,7 @@ module.exports = React.createClass({
 	},
 
 	renderD3: function() {
-		$(this.refs.attendeeBreakDown.getDOMNode()).html('');
+		$(this.refs.attendeeBreakDown).html('');
 
 		var total = this.state.women + this.state.men;
 
@@ -75,7 +75,7 @@ module.exports = React.createClass({
 				return d.count;
 			});
 
-		var svg = d3.select(this.refs.attendeeBreakDown.getDOMNode())
+		var svg = d3.select(this.refs.attendeeBreakDown)
 			.append('svg')
 				.attr('width', width)
 				.attr('height', height)

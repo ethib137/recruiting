@@ -37,7 +37,7 @@ module.exports = React.createClass({
 			);
 		};
 
-		$(this.refs.skills.getDOMNode()).autocomplete(
+		$(this.refs.skills).autocomplete(
 			{
 				source: source,
 				minLength: 1,
@@ -98,7 +98,7 @@ module.exports = React.createClass({
 					recruit.skills.map(
 						function(skill) {
 							return (
-								<span className="skill-pill">
+								<span className="skill-pill" key={skill._id}>
 									{skill.label}
 									<button data-id={skill._id} onClick={instance.props.parent.removeSkill} type="button" className="close">
 										<span aria-hidden="true">&times;</span>

@@ -71,7 +71,7 @@ module.exports = React.createClass({
 		var width = 1110;
 		var height = 555;
 
-		var svg = d3.select(instance.refs.mapContainer.getDOMNode()).append('svg')
+		var svg = d3.select(instance.refs.mapContainer).append('svg')
 			.attr('width', width)
 			.attr('height', height);
 

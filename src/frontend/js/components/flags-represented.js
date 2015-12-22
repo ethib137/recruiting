@@ -45,7 +45,7 @@ module.exports = React.createClass({
 							function(country) {
 								if (country) {
 									return (
-										<span className="flag">
+										<span className="flag" key={country}>
 											<Flag basePath="documents/flags" country={country} format="png" pngSize={64} shiny={false} />
 										</span>
 									);

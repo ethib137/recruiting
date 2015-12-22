@@ -5,7 +5,7 @@ module.exports = React.createClass({
 	componentDidMount: function() {
 		var instance = this;
 
-		$(this.refs.gradTerm.getDOMNode()).datepicker(
+		$(this.refs.gradTerm).datepicker(
 			{
 				onSelect: function(date) {
 					var parent = instance.props.parent;
