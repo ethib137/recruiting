@@ -1,14 +1,18 @@
 module.exports = function(state, action) {
 	if (typeof state === 'undefined') {
-		return [];
+		return {
+			recruits: [],
+			newestRecruit: null
+		};
 	}
 
 	if (action.type === 'ADD_RECRUIT') {
-		state.push(action.recruit);
+		state.newestRecruit = action.recruit;
+		state.recruits.push(action.recruit);
 
 		return state;
 	} else if (action.type === 'INITIAL_RECRUITS') {
-		state = action.recruits;
+		state.recruits = action.recruits;
 
 		return state;
 	} else {

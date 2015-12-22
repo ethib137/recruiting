@@ -18,7 +18,7 @@ module.exports = React.createClass({
 		var store = this.context.store;
 
 		store.subscribe(function() {
-			var recruits = store.getState();
+			var recruits = store.getState().recruits;
 
 			if (recruits.length) {
 				var categoryObj = {};

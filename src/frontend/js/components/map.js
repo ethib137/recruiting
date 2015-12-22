@@ -47,22 +47,26 @@ module.exports = React.createClass({
 
 	getInitialState: function() {
 		return {
-			recruits: this.context.store.getState()
+			recruits: this.context.store.getState().recruits
 		}
 	},
 
 	componentDidMount: function() {
 		var instance = this;
 
+		this.renderD3();
+
 		var store = this.context.store;
 
 		store.subscribe(function() {
-			instance.setState({recruits: store.getState()});
+			instance.setState({recruits: store.getState().recruits});
 		});
 	},
 
 	componentDidUpdate: function() {
-		this.renderD3();
+		var instance = this;
+
+		this.renderUserPins(instance._svg, instance._projection);
 	},
 
 	renderD3: function() {
@@ -80,6 +84,9 @@ module.exports = React.createClass({
 			.translate([width / 2, height / 2]);
 
 		instance.renderMap(svg, projection);
+
+		instance._svg = svg;
+		instance._projection = projection;
 	},
 
 	renderLiferayOffices: function(svg, projection) {
@@ -115,7 +122,6 @@ module.exports = React.createClass({
 				.append('path')
 				.attr('d', d3.geo.path().projection(projection));
 
-			instance.renderUserPins(svg, projection);
 			instance.renderLiferayOffices(svg, projection);
 		});
 	},

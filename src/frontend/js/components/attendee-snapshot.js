@@ -7,79 +7,110 @@ module.exports = React.createClass({
 	},
 
 	getInitialState: function() {
-		var recruits = this.context.store.getState();
-
 		return {
-			activeRecruit: recruits[0] || {},
-			allRecruits: recruits || []
+			newRecruits: []
 		}
 	},
 
 	componentDidMount: function() {
 		var instance = this;
 
-		var store = this.context.store;
+		var store = instance.context.store;
 
 		store.subscribe(function() {
-			var recruits = store.getState();
+			var storeData = store.getState();
 
-			if (recruits.length) {
+			var newRecruits = instance.state.newRecruits;
+			var newestRecruit = storeData.newestRecruit;
+
+			if (newestRecruit) {
+				newRecruits.push(newestRecruit);
+
 				instance.setState({
-					activeRecruit: recruits[0],
-					allRecruits: recruits
+					newRecruits: newRecruits
 				});
-
-				instance.cycleRecruits();
+			}
+			else {
+				setTimeout(function() {
+					instance.cycleRecruits();
+				}, 1000);
 			}
 		});
+	},
+
+	componentDidUpdate: function() {
+		this.cycleRecruits();
 	},
 
 	cycleRecruits: function() {
 		var instance = this;
 
-		this.state.allRecruits.forEach(
-			function(item, index) {
-				setTimeout(
-					function() {
-						instance.setState({
-							activeRecruit: item
-						});
+		var newRecruits = instance.state.newRecruits;
 
-						d3.select('#people' + item._id)
-							.transition()
-							.duration(2400)
-							.attr('r', 50)
-							.attr('fill', '#FFB700')
-							.transition()
-							.attr('fill', '#FFFFFF')
-							.attr('r', 1.5)
-					},
-					5000 * index
-				);
+		var recruit = newRecruits[0];
+
+		if (recruit) {
+			d3.select('#people' + recruit._id)
+				.transition()
+				.duration(2400)
+				.attr('r', 50)
+				.attr('fill', '#FFB700')
+				.transition()
+				.attr('fill', '#FFFFFF')
+				.attr('r', 1.5)
+				.each('end', function() {
+					newRecruits.shift();
+
+					instance.setState({
+						newRecruits: newRecruits
+					});
+				});
+		}
+		else {
+			var allRecruits = this.context.store.getState().recruits;
+
+			var total = allRecruits.length;
+
+			var numToAdd = 5;
+			var randomIndex = Math.floor(Math.random() * (total));
+
+			if (total < numToAdd) {
+				numToAdd = total;
+				randomIndex = 0;
 			}
-		);
+
+			var oldRecruitsToDisplay = allRecruits.slice(randomIndex, randomIndex + numToAdd);
+
+			instance.setState({
+				newRecruits: oldRecruitsToDisplay
+			});
+		}
 	},
 
 	render: function() {
 		var majorNode = null;
 		var schoolNode = null;
 
-		if (this.state.activeRecruit.fieldOfStudy) {
-			majorNode = (
-				<div>
-					<span>Major:</span>
-					{this.state.activeRecruit.fieldOfStudy}
-				</div>
-			);
-		}
+		var activeRecruit = this.state.newRecruits[0] || {};
 
-		if (this.state.activeRecruit.school) {
-			schoolNode = (
-				<div>
-					<span>School:</span>
-					{this.state.activeRecruit.school}
-				</div>
-			);
+		if (activeRecruit) {
+			if (activeRecruit.fieldOfStudy) {
+				majorNode = (
+					<div>
+						<span>Major:</span>
+						{activeRecruit.fieldOfStudy}
+					</div>
+				);
+			}
+
+			if (activeRecruit.school) {
+				schoolNode = (
+					<div>
+						<span>School:</span>
+						{activeRecruit.school}
+					</div>
+				);
+			}
 		}
 
 		return (
@@ -87,12 +118,12 @@ module.exports = React.createClass({
 				<div>Attendee Snapshot:</div>
 
 				<div className="img-container">
-					<img src={this.state.activeRecruit.profilePicture} />
+					<img src={activeRecruit.profilePicture} />
 				</div>
 				<div className="attendee-details text-center">
 					<div>
 						<span>Name:</span>
-						{this.state.activeRecruit.firstName}
+						{activeRecruit.firstName}
 					</div>
 
 					{schoolNode}
