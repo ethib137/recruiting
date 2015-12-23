@@ -40,7 +40,7 @@ module.exports = React.createClass({
 		var videoObj = {"video": true};
 
 		var errBack = function(error) {
-			console.log('Video capture error: ', error.code);
+			console.log('Video capture error: ', error);
 		};
 
 		if(navigator.getUserMedia) { // Standard

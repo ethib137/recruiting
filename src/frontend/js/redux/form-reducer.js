@@ -1,5 +1,5 @@
 module.exports = function(state, action) {
-	if (typeof state === 'undefined') {
+	if (typeof state === 'undefined' || action.type === 'CLEAR_STORE') {
 		return {
 			comments: null,
 			confirmEmail: null,

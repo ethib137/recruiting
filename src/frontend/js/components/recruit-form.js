@@ -82,6 +82,8 @@ module.exports = React.createClass({
 					{
 						data: JSON.stringify(state),
 						success: function(response){
+							instance.context.store.dispatch({type: 'CLEAR_STORE'});
+
 							instance.history.pushState(null, successURL, {city: response.data.missionsLocation});
 						},
 						dataType: 'json',

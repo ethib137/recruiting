@@ -16,7 +16,7 @@ gulp.task('copy', function() {
 		.pipe(gulp.dest('dist/frontend'));
 
 	gulp.src('src/frontend/js/*')
-		.pipe(gulp.dest('dist/frontend'));
+		.pipe(gulp.dest('dist/frontend/js'));
 
 	gulp.src('src/frontend/css/*')
 		.pipe(sass().on('error', sass.logError))
@@ -27,6 +27,9 @@ gulp.task('copy', function() {
 
 	gulp.src('src/documents/**/*')
 		.pipe(gulp.dest('dist/documents'));
+
+	gulp.src('./*.pem')
+		.pipe(gulp.dest('dist/server'));
 });
 
 gulp.task('default',['browserify', 'copy']);

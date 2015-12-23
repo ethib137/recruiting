@@ -11,7 +11,7 @@ module.exports = React.createClass({
 
 		setTimeout(
 			function() {
-				instance.history.pushState(null, '/form');
+				window.location.href = window.location.origin + '/#/form';
 			},
 			5000
 		);
