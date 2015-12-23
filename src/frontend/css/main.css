@@ -19,6 +19,23 @@ path {
 	stroke: #233240;
 }
 
+.drop-down-alert {
+	background-color: $red;
+	color: $white;
+	left: 0;
+	padding: 20px 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 10;
+
+	.close {
+		position: relative;
+		right: 26px;
+	}
+}
+
 .img-container {
 	border-radius: 50%;
 	height: 240px;
@@ -37,7 +54,7 @@ path {
 
 .has-danger {
 	.form-control {
-		border-width: 1px solid $red;
+		border: 1px solid $red;
 	}
 
 	.form-control-label {

@@ -22,6 +22,7 @@ module.exports = React.createClass({
 
 	getInitialState: function() {
 		return {
+			alert: null,
 			recruit: this.context.store.getState()
 		}
 	},
@@ -71,19 +72,30 @@ module.exports = React.createClass({
 			successURL = '/admin';
 		}
 
-		$.ajax(
-			$.extend(
-				config,
-				{
-					data: JSON.stringify(this.state.recruit),
-					success: function(response){
-						instance.history.pushState(null, successURL, {city: response.data.missionsLocation});
-					},
-					dataType: 'json',
-					contentType : 'application/json'
-				}
-			)
-		);
+		var state = instance.context.store.getState();
+
+		if (state.firstName && state.lastName && state.email) {
+			$.ajax(
+				$.extend(
+					config,
+					{
+						data: JSON.stringify(state),
+						success: function(response){
+							instance.history.pushState(null, successURL, {city: response.data.missionsLocation});
+						},
+						dataType: 'json',
+						contentType : 'application/json'
+					}
+				)
+			);
+		}
+		else {
+			this.setState({alert: true});
+		}
+	},
+
+	closeAlert: function() {
+		this.setState({alert: false});
 	},
 
 	render: function () {
@@ -91,6 +103,7 @@ module.exports = React.createClass({
 
 		var adminInputs;
 		var adminToolbar;
+		var alert;
 
 		if (this.props.params && this.props.params.id) {
 			adminInputs = (
@@ -124,8 +137,19 @@ module.exports = React.createClass({
 			);
 		}
 
+		if (this.state.alert) {
+			alert = (
+				<div className="drop-down-alert">
+					First name, last name, and email are required.
+
+					<span className="close" aria-hidden="true" onClick={this.closeAlert}>&times;</span>
+				</div>
+			);
+		}
+
 		return (
 			<div className="container-fluid form-page">
+				{alert}
 				{adminToolbar}
 				<form action="" onSubmit={this.onSubmit}>
 					<div className="row">
