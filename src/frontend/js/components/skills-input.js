@@ -130,6 +130,10 @@ module.exports = React.createClass({
 		);
 	},
 
+	onInputBlur: function(event) {
+		$(event.currentTarget).val('');
+	},
+
 	render: function() {
 		var instance = this;
 
@@ -138,6 +142,7 @@ module.exports = React.createClass({
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="skillsInput">Know any technical skills?</label>
+
 				<div className="form-control">
 				{
 					recruit.skills.map(
@@ -154,7 +159,7 @@ module.exports = React.createClass({
 						}
 					)
 				}
-				<input ref="skills" type="text" className="skills-input" placeholder="HTML, Java, Photoshop, etc" />
+				<input ref="skills" type="text" className="skills-input" onBlur={this.onInputBlur} placeholder="HTML, Java, Photoshop, etc" />
 				</div>
 			</fieldset>
 		);

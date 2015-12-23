@@ -57,11 +57,15 @@ module.exports = React.createClass({
 		this.setState({recruit: recruit});
 	},
 
+	onInputBlur: function(event) {
+		$(event.currentTarget).val('');
+	},
+
 	render: function() {
 		var recruit = this.state.recruit;
 
 		var pill = (
-			<input ref="countryInput" type="text" className="form-control" name="missionsLocation" placeholder="Ecuador" />
+			<input ref="countryInput" type="text" className="form-control" name="missionsLocation" onBlur={this.onInputBlur} placeholder="Ecuador" />
 		);
 
 
@@ -80,7 +84,6 @@ module.exports = React.createClass({
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="missionsLocation">If you could be on mission anywhere, where would it be?</label>
-
 				<div>
 					{pill}
 				</div>

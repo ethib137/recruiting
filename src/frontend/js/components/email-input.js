@@ -54,14 +54,14 @@ module.exports = React.createClass({
 					<fieldset className="row form-group">
 						<label className="form-control-label" htmlFor="email">Email</label>
 						<small className="text-muted">(Required)</small>
-						<input ref="firstEmail" type="text" className="form-control" name="email" onBlur={this.onInputBlur} placeholder="jim.elliot@gmail.com" value={recruit.email} />
+						<input ref="firstEmail" type="text" className="form-control" name="email" onBlur={this.onInputBlur} placeholder="jim.elliot@gmail.com" defaultValue={recruit.email} />
 					</fieldset>
 				</div>
 				<div className="col-md-4">
 					<fieldset ref="warningEmail" className="row form-group">
 						<label className="form-control-label" htmlFor="confirmEmail">Confirm Email</label>
 						<small className="text-muted">(Required)</small>
-						<input ref="secondEmail" type="text" className="form-control" name="confirmEmail" onBlur={this.onInputBlur} placeholder="jim.elliot@gmail.com" value={recruit.email} />
+						<input ref="secondEmail" type="text" className="form-control" name="confirmEmail" onBlur={this.onInputBlur} placeholder="jim.elliot@gmail.com" defaultValue={recruit.email} />
 					</fieldset>
 				</div>
 			</div>

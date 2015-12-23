@@ -42,7 +42,7 @@ module.exports = React.createClass({
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="gradTerm">Graduation Date</label>
-				<input ref="gradTerm" type="text" className="form-control" name="gradTerm" placeholder="May 1949" value={recruit.gradTerm} />
+				<input ref="gradTerm" type="text" className="form-control" name="gradTerm" placeholder="May 1949" defaultValue={recruit.gradTerm} />
 			</fieldset>
 		);
 	}

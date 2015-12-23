@@ -72,6 +72,10 @@ module.exports = React.createClass({
 		this.setState({recruit: recruit});
 	},
 
+	onInputBlur: function(event) {
+		$(event.currentTarget).val('');
+	},
+
 	render: function() {
 		var instance = this;
 
@@ -80,6 +84,7 @@ module.exports = React.createClass({
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="languagesInput">What languages do you speak?</label>
+
 				<div className="form-control">
 				{
 					recruit.spokenLanguages.map(
@@ -96,7 +101,7 @@ module.exports = React.createClass({
 						}
 					)
 				}
-				<input ref="languages" type="text" className="languages-input" placeholder="Aramaic, English, Klingon, etc" />
+				<input ref="languages" type="text" className="languages-input" onBlur={this.onInputBlur} placeholder="Aramaic, English, Klingon, etc" />
 				</div>
 			</fieldset>
 		);

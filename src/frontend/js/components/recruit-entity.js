@@ -65,7 +65,7 @@ module.exports = React.createClass({
 
 						<fieldset className="form-group">
 							<label htmlFor="comments">Comments</label>
-							<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
+							<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" defaultValue={recruit.comments} ></textarea>
 							<button className="btn btn-primary" type="submit">Submit</button>
 						</fieldset>
 					</form>

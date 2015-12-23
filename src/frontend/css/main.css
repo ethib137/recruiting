@@ -52,6 +52,10 @@ path {
 	}
 }
 
+.form-control input {
+	width: 100%;
+}
+
 .has-danger {
 	.form-control {
 		border: 1px solid $red;

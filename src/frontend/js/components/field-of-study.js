@@ -77,11 +77,15 @@ module.exports = React.createClass({
 		);
 	},
 
+	onInputBlur: function(event) {
+		$(event.currentTarget).val('');
+	},
+
 	render: function() {
 		var recruit = this.state.recruit;
 
 		var pill = (
-			<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Greek" />
+			<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" onBlur={this.onInputBlur} placeholder="Greek" />
 		);
 
 

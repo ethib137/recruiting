@@ -115,7 +115,7 @@ module.exports = React.createClass({
 							<div className="col-md-8">
 								<fieldset className="form-group">
 									<label htmlFor="comments">Comments</label>
-									<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" value={recruit.comments} ></textarea>
+									<textarea className="form-control" name="comments" rows="5" placeholder="Admin Comments Here" defaultValue={recruit.comments} ></textarea>
 								</fieldset>
 							</div>
 
@@ -167,14 +167,14 @@ module.exports = React.createClass({
 										<fieldset className="row form-group">
 											<label htmlFor="firstName">First Name</label>
 											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="firstName" onChange={this.onInputChange} placeholder="Jim" value={recruit.firstName} />
+											<input type="text" className="form-control" name="firstName" onChange={this.onInputChange} placeholder="Jim" defaultValue={recruit.firstName} />
 										</fieldset>
 									</div>
 									<div className="col-md-4">
 										<fieldset className="row form-group">
 											<label htmlFor="lastName">Last Name</label>
 											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="lastName" onChange={this.onInputChange} placeholder="Elliot" value={recruit.lastName} />
+											<input type="text" className="form-control" name="lastName" onChange={this.onInputChange} placeholder="Elliot" defaultValue={recruit.lastName} />
 										</fieldset>
 									</div>
 
@@ -214,7 +214,7 @@ module.exports = React.createClass({
 							<div className="form-card education">
 								<fieldset className="row form-group">
 									<label htmlFor="school">School</label><small className="text-muted">(Only if applicable)</small>
-									<input type="text" className="form-control" name="school" onChange={this.onInputChange} placeholder="Wheaton College" value={recruit.school} />
+									<input type="text" className="form-control" name="school" onChange={this.onInputChange} placeholder="Wheaton College" defaultValue={recruit.school} />
 								</fieldset>
 
 								<FieldOfStudyInput />
@@ -245,12 +245,12 @@ module.exports = React.createClass({
 							<div className="form-card elsewhere">
 								<fieldset className="row form-group">
 									<label htmlFor="githubUsername">Github Username</label>
-									<input type="text" className="form-control" name="githubUsername" onChange={this.onInputChange} placeholder="https://github.com/Corge" value={recruit.githubUsername} />
+									<input type="text" className="form-control" name="githubUsername" onChange={this.onInputChange} placeholder="https://github.com/Corge" defaultValue={recruit.githubUsername} />
 								</fieldset>
 
 								<fieldset className="row form-group">
 									<label htmlFor="portfolioSite">Portfolio Site</label>
-									<input type="text" className="form-control" name="portfolioSite" onChange={this.onInputChange} placeholder="https://myPortfolio.com/" value={recruit.portfolioSite} />
+									<input type="text" className="form-control" name="portfolioSite" onChange={this.onInputChange} placeholder="https://myPortfolio.com/" defaultValue={recruit.portfolioSite} />
 								</fieldset>
 							</div>
 						</div>

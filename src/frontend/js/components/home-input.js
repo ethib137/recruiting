@@ -70,11 +70,15 @@ module.exports = React.createClass({
 		this.setState({recruit: recruit});
 	},
 
+	onInputBlur: function(event) {
+		$(event.currentTarget).val('');
+	},
+
 	render: function() {
 		var recruit = this.state.recruit;
 
 		var pill = (
-			<input ref="homeInput" type="text" className="form-control" name="home" placeholder="Portland, OR, USA" />
+			<input ref="homeInput" type="text" className="form-control" name="home" onBlur={this.onInputBlur} placeholder="Portland, OR, USA" />
 		);
 
 
