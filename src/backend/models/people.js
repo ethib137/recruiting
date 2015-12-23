@@ -22,7 +22,8 @@ var people = {
 	'profilePicture': String,
 	'rating': String,
 	'school': String,
-	'skills': []
+	'skills': Array,
+	'spokenLanguages': Array
 };
 
 module.exports = mongoose.model('people', people);

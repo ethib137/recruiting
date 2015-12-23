@@ -1,14 +1,26 @@
 var cityModel = require('../models/city');
 var countryModel = require('../models/country');
 var majorModel = require('../models/major');
+var languageModel = require('../models/language');
 
 var citiesJson = require('../../documents/staticFiles/cities');
 var countriesJson = require('../../documents/staticFiles/countries');
-
-
+var languagesJson = require('../../documents/staticFiles/languages');
 var majorsJson = require('../../documents/staticFiles/majors');
 
 module.exports = function() {
+	languageModel.find({}, function(err, data) {
+		console.log(data.length + ' languages');
+
+		if (!data.length) {
+			languageModel.collection.insertMany(languagesJson, function(err, r) {
+				if (err) {
+					console.log(err);
+				}
+			});
+		}
+	});
+
 	cityModel.find({}, function(err, data) {
 		console.log(data.length + ' cities');
 

@@ -2,10 +2,11 @@
 var React = require('react');
 
 var EmailInput = require('./email-input');
-var HomeInput = require('./home-input');
-var MissionsInput = require('./country-input');
 var FieldOfStudyInput = require('./field-of-study');
 var GradTermInput = require('./grad-date');
+var HomeInput = require('./home-input');
+var LanguagesInput = require('./languages-input');
+var MissionsInput = require('./country-input');
 var SkillsInput = require('./skills-input');
 var VideoInput = require('./photobooth');
 
@@ -227,7 +228,7 @@ module.exports = React.createClass({
 
 							<div className="form-card skills-group">
 								<SkillsInput />
-								<SkillsInput />
+								<LanguagesInput />
 							</div>
 
 							<fieldset className="row form-group contact-me">

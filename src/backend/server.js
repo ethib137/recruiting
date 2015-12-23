@@ -25,6 +25,7 @@ require('./controllers/geodata')(router);
 require('./controllers/majors')(router);
 require('./controllers/recruits')(router, io);
 require('./controllers/skills')(router);
+require('./controllers/languages')(router);
 
 app.use('/', router);
 

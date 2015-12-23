@@ -19,7 +19,8 @@ module.exports = function(state, action) {
 			profilePicture: null,
 			rating: 0,
 			school: null,
-			skills: []
+			skills: [],
+			spokenLanguages: []
 		};
 	}
 
