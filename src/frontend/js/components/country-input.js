@@ -15,6 +15,18 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
+		this.bindAC();
+	},
+
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+
+		this.bindAC();
+	},
+
+	bindAC: function() {
 		var instance = this;
 
 		var countryInput = this.refs.countryInput;
@@ -37,19 +49,41 @@ module.exports = React.createClass({
 		);
 	},
 
-	componentDidUpdate: function() {
+	removeCountry: function() {
 		var recruit = this.state.recruit;
 
-		this.context.store.dispatch(setRecruit(recruit));
+		recruit.missionsLocation = null;
+
+		this.setState({recruit: recruit});
 	},
 
 	render: function() {
 		var recruit = this.state.recruit;
 
+		var pill = (
+			<input ref="countryInput" type="text" className="form-control" name="missionsLocation" placeholder="Ecuador" />
+		);
+
+
+		if (recruit.missionsLocation) {
+			pill = (
+				<span className="pill">
+					{recruit.missionsLocation}
+					<button onClick={this.removeCountry} type="button" className="close">
+						<span aria-hidden="true">&times;</span>
+						<span className="sr-only">Close</span>
+					</button>
+				</span>
+			);
+		}
+
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="missionsLocation">If you could be on mission anywhere, where would it be?</label>
-				<input ref="countryInput" type="text" className="form-control" name="missionsLocation" placeholder="Ecuador" value={recruit.missionsLocation} />
+
+				<div>
+					{pill}
+				</div>
 			</fieldset>
 		);
 	}

@@ -143,7 +143,7 @@ module.exports = React.createClass({
 					recruit.skills.map(
 						function(skill) {
 							return (
-								<span className="skill-pill" key={skill._id}>
+								<span className="pill" key={skill._id}>
 									{skill.label}
 									<button data-id={skill._id} onClick={instance.removeSkill} type="button" className="close">
 										<span aria-hidden="true">&times;</span>

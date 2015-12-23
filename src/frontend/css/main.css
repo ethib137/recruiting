@@ -232,21 +232,24 @@ h3 {
 	}
 }
 
-.skill-pill {
+.pill {
+	background-color: $white;
 	border-radius: 12px;
 	border: 1px solid;
+	color: #999;
 	display: inline-block;
 	margin-right: 8px;
-	padding: 0 4px;
+	padding: 4px;
 
 	> span {
+		color: #999;
 		max-width: 150px;
-		padding: 0 4px;
+		padding: 4px;
 		vertical-align: middle;
 	}
 
 	.close {
-		border-left: 1px solid;
+		color: #999;
 		float: none;
 		padding: 0 2px;
 		vertical-align: top;

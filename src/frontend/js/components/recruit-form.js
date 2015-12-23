@@ -126,7 +126,7 @@ module.exports = React.createClass({
 		return (
 			<div className="container-fluid form-page">
 				{adminToolbar}
-				<form action="" onSubmit={this.onSubmit} onChange={this.onInputChange}>
+				<form action="" onSubmit={this.onSubmit}>
 					<div className="row">
 						<div className="col-md-4">
 							<VideoInput />
@@ -141,14 +141,14 @@ module.exports = React.createClass({
 										<fieldset className="row form-group">
 											<label htmlFor="firstName">First Name</label>
 											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="firstName" placeholder="Jim" value={recruit.firstName} />
+											<input type="text" className="form-control" name="firstName" onChange={this.onInputChange} placeholder="Jim" value={recruit.firstName} />
 										</fieldset>
 									</div>
 									<div className="col-md-4">
 										<fieldset className="row form-group">
 											<label htmlFor="lastName">Last Name</label>
 											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="lastName" placeholder="Elliot" value={recruit.lastName} />
+											<input type="text" className="form-control" name="lastName" onChange={this.onInputChange} placeholder="Elliot" value={recruit.lastName} />
 										</fieldset>
 									</div>
 
@@ -156,11 +156,11 @@ module.exports = React.createClass({
 										<label htmlFor="isMale">Gender</label>
 										<div className="radio">
 											<label className="col-md-6">
-												<input type="radio" name="isMale" id="isMale1" defaultChecked={recruit.isMale} value="true" />
+												<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale1" defaultChecked={recruit.isMale} value="true" />
 												Male
 											</label>
 											<label className="col-md-6">
-												<input type="radio" name="isMale" id="isMale2" defaultChecked={!recruit.isMale} value="false" />
+												<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale2" defaultChecked={!recruit.isMale} value="false" />
 												Female
 											</label>
 										</div>
@@ -172,7 +172,7 @@ module.exports = React.createClass({
 										<fieldset className="row form-group">
 											<label htmlFor="email">Email</label>
 											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="email" placeholder="jim.elliot@gmail.com" value={recruit.email} />
+											<input type="text" className="form-control" name="email" onChange={this.onInputChange} placeholder="jim.elliot@gmail.com" value={recruit.email} />
 										</fieldset>
 									</div>
 									<div className="col-md-4">
@@ -203,7 +203,7 @@ module.exports = React.createClass({
 							<div className="form-card education">
 								<fieldset className="row form-group">
 									<label htmlFor="school">School</label><small className="text-muted">(Only if applicable)</small>
-									<input type="text" className="form-control" name="school" placeholder="Wheaton College" value={recruit.school} />
+									<input type="text" className="form-control" name="school" onChange={this.onInputChange} placeholder="Wheaton College" value={recruit.school} />
 								</fieldset>
 
 								<FieldOfStudyInput />
@@ -222,7 +222,7 @@ module.exports = React.createClass({
 
 							<fieldset className="row form-group contact-me">
 								<label className="checkbox-inline">
-									<input type="checkbox" className="form-control" name="contactMe" defaultChecked={recruit.contactMe} defaultValue={recruit.contactMe} />
+									<input type="checkbox" className="form-control" name="contactMe" onChange={this.onInputChange} defaultChecked={recruit.contactMe} defaultValue={recruit.contactMe} />
 									Contact me about a job.
 								</label>
 							</fieldset>
@@ -234,12 +234,12 @@ module.exports = React.createClass({
 							<div className="form-card elsewhere">
 								<fieldset className="row form-group">
 									<label htmlFor="githubUsername">Github Username</label>
-									<input type="text" className="form-control" name="githubUsername" placeholder="https://github.com/Corge" value={recruit.githubUsername} />
+									<input type="text" className="form-control" name="githubUsername" onChange={this.onInputChange} placeholder="https://github.com/Corge" value={recruit.githubUsername} />
 								</fieldset>
 
 								<fieldset className="row form-group">
 									<label htmlFor="portfolioSite">Portfolio Site</label>
-									<input type="text" className="form-control" name="portfolioSite" placeholder="https://myPortfolio.com/" value={recruit.portfolioSite} />
+									<input type="text" className="form-control" name="portfolioSite" onChange={this.onInputChange} placeholder="https://myPortfolio.com/" value={recruit.portfolioSite} />
 								</fieldset>
 							</div>
 						</div>

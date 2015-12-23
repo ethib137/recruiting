@@ -19,6 +19,27 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
+		this.bindAC();
+	},
+
+	componentDidUpdate: function() {
+		var recruit = this.state.recruit;
+
+		this.context.store.dispatch(setRecruit(recruit));
+
+		this.bindAC();
+	},
+
+	removeMajor: function() {
+		var recruit = this.state.recruit;
+
+		recruit.fieldOfStudy = null;
+		recruit.categoryOfStudy = null;
+
+		this.setState({recruit: recruit});
+	},
+
+	bindAC: function() {
 		var instance = this;
 
 		var majorInput = this.refs.fieldOfStudy;
@@ -56,19 +77,33 @@ module.exports = React.createClass({
 		);
 	},
 
-	componentDidUpdate: function() {
-		var recruit = this.state.recruit;
-
-		this.context.store.dispatch(setRecruit(recruit));
-	},
-
 	render: function() {
 		var recruit = this.state.recruit;
+
+		var pill = (
+			<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Greek" />
+		);
+
+
+		if (recruit.fieldOfStudy) {
+			pill = (
+				<span className="pill">
+					{recruit.fieldOfStudy}
+					<button onClick={this.removeMajor} type="button" className="close">
+						<span aria-hidden="true">&times;</span>
+						<span className="sr-only">Close</span>
+					</button>
+				</span>
+			);
+		}
 
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="fieldOfStudy">Undergraduate Major</label>
-				<input ref="fieldOfStudy" type="text" className="form-control" name="fieldOfStudy" placeholder="Greek" value={recruit.fieldOfStudy} />
+
+				<div>
+					{pill}
+				</div>
 			</fieldset>
 		);
 	}
