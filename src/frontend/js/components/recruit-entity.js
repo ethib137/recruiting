@@ -52,7 +52,10 @@ module.exports = React.createClass({
 		if (this.state.addComment) {
 			return (
 				<div className="card">
-					<img className="card-img-top" src={recruit.profilePicture} />
+					<div className="img-container">
+						<img className="card-img-top" src={recruit.profilePicture} />
+					</div>
+
 					<form action="" className="card-block" onSubmit={this.onSubmit} onChange={this.onInputChange}>
 						<fieldset className="form-group">
 							<label htmlFor="rating">Rating</label>
@@ -73,10 +76,10 @@ module.exports = React.createClass({
 			);
 		}
 		else if (recruit.rating == 0 || this.props.showAll) {
-			var link = '/edit/' + recruit._id;
+			var href = '/edit/' + recruit._id;
 
 			var buttonRow = (
-				<Link state={recruit} to={link}>Edit Recruit</Link>
+				<Link to={href}>Edit Recruit</Link>
 			);
 
 			if (!this.props.showAll) {

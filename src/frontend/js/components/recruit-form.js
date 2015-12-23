@@ -28,6 +28,25 @@ module.exports = React.createClass({
 		}
 	},
 
+	componentDidMount: function() {
+		var instance = this;
+
+		var hashArray = window.location.hash.split('/');
+
+		if (hashArray.length > 2) {
+			var id = hashArray.pop();
+
+			$.ajax({
+				url: '/api/recruits/' + id,
+				dataType: "json",
+				success: function(response) {
+					console.log(response);
+					instance.setState({recruit: response})
+				}
+			});
+		}
+	},
+
 	componentDidUpdate: function() {
 		var recruit = this.state.recruit;
 
@@ -108,7 +127,9 @@ module.exports = React.createClass({
 		var adminToolbar;
 		var alert;
 
-		if (this.props.params && this.props.params.id) {
+		var hashArray = window.location.hash.split('/');
+
+		if (hashArray > 2) {
 			adminInputs = (
 				<div className="admin-only row">
 					<h3 className="admin-only">Admin</h3>
