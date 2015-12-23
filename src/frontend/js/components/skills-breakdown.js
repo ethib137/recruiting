@@ -7,20 +7,39 @@ module.exports = React.createClass({
 	},
 
 	getInitialState: function() {
+		var processedSkillsObj = this.processSkills(this.context.store.getState().recruits);
+
 		return {
-			maxSize: 0,
-			skills: []
+			maxSize: processedSkillsObj.maxSize,
+			skills: processedSkillsObj.skills
 		};
 	},
 
+	componentDidMount: function() {
+		var instance = this;
+
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			var recruits = store.getState().recruits;
+
+			var processedObj = instance.processSkills(recruits);
+
+			instance.setState({
+				skills: processedObj.skills,
+				maxSize: processedObj.maxSize
+			});
+		});
+	},
+
 	componentDidUpdate: function() {
+		var instance = this;
+
 		this.renderD3();
 	},
 
 	processSkills: function(response) {
 		var instance = this;
-
-		var stateSkills = instance.state.skills;
 
 		var skillsObj = {};
 
@@ -55,7 +74,10 @@ module.exports = React.createClass({
 			}
 		});
 
-		instance.setState({skills: skillsArray, maxSize: maxSize});
+		return {
+			skills: skillsArray,
+			maxSize: maxSize
+		}
 	},
 
 	renderD3: function() {
