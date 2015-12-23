@@ -35,6 +35,20 @@ path {
 	}
 }
 
+.has-danger {
+	.form-control {
+		border-width: 1px solid $red;
+	}
+
+	.form-control-label {
+		color: $red;
+	}
+
+	.text-muted {
+		color: $red;
+	}
+}
+
 /* ---------- Admin ---------- */
 
 .card {

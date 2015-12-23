@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var EmailInput = require('./email-input');
 var HomeInput = require('./home-input');
 var MissionsInput = require('./country-input');
 var FieldOfStudyInput = require('./field-of-study');
@@ -167,22 +168,7 @@ module.exports = React.createClass({
 									</fieldset>
 								</div>
 
-								<div className="row">
-									<div className="col-md-4">
-										<fieldset className="row form-group">
-											<label htmlFor="email">Email</label>
-											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="email" onChange={this.onInputChange} placeholder="jim.elliot@gmail.com" value={recruit.email} />
-										</fieldset>
-									</div>
-									<div className="col-md-4">
-										<fieldset className="row form-group">
-											<label htmlFor="confirmEmail">Confirm Email</label>
-											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="confirmEmail" placeholder="jim.elliot@gmail.com" value={recruit.confirmEmail} />
-										</fieldset>
-									</div>
-								</div>
+								<EmailInput />
 
 								<div className="row">
 									<div className="col-md-6">
