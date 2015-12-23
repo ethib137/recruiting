@@ -231,18 +231,51 @@ h3 {
 	margin-left: 4px;
 }
 
+@keyframes flash {
+	0% {background-color: white;}
+	100% {background-color: transparent;}
+}
+
 .photo-booth {
 	margin-bottom: 30px;
 	text-align: center;
 
+	.photo-button {
+		margin-top: 24px;
+	}
+
+	.photo-countdown {
+		border-radius: 50%;
+		color: #FFF;
+		font-size: 74px;
+		height: 300px;
+		left: 0;
+		margin: 0 auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 300px;
+		z-index: 10;
+
+		&.flash {
+			animation-duration: 0.4s;
+			animation-name: flash;
+		}
+
+		span {
+			position: relative;
+			top: 86px;
+		}
+	}
+
 	.video-container {
 		background-color: #000;
 		border-radius: 50%;
-		height: 240px;
+		height: 300px;
 		margin: 0 auto;
 		overflow: hidden;
 		position: relative;
-		width: 240px;
+		width: 300px;
 	}
 
 	canvas, video {

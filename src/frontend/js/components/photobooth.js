@@ -21,34 +21,7 @@ module.exports = React.createClass({
 		var recruit = this.state.recruit;
 
 		if (!recruit._id) {
-			this.canvasNode = this.refs.imageCanvas;
-			var videoDisplay = this.refs.webcamDisplay;
-
-			this.videoDisplay = videoDisplay;
-
-			var videoObj = {"video": true};
-
-			var errBack = function(error) {
-				console.log('Video capture error: ', error.code);
-			};
-
-			if(navigator.getUserMedia) { // Standard
-				navigator.getUserMedia(videoObj, function(stream) {
-					videoDisplay.src = stream;
-					videoDisplay.play();
-				}, errBack);
-			} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-				navigator.webkitGetUserMedia(videoObj, function(stream){
-					videoDisplay.src = window.URL.createObjectURL(stream);
-					videoDisplay.play();
-				}, errBack);
-			}
-			else if(navigator.mozGetUserMedia) { // Firefox-prefixed
-				navigator.mozGetUserMedia(videoObj, function(stream){
-					videoDisplay.src = window.URL.createObjectURL(stream);
-					videoDisplay.play();
-				}, errBack);
-			}
+			this.bindPhotoBooth();
 		}
 	},
 
@@ -58,12 +31,43 @@ module.exports = React.createClass({
 		this.context.store.dispatch(setRecruit(recruit));
 	},
 
+	bindPhotoBooth: function() {
+		this.canvasNode = this.refs.imageCanvas;
+		var videoDisplay = this.refs.webcamDisplay;
+
+		this.videoDisplay = videoDisplay;
+
+		var videoObj = {"video": true};
+
+		var errBack = function(error) {
+			console.log('Video capture error: ', error.code);
+		};
+
+		if(navigator.getUserMedia) { // Standard
+			navigator.getUserMedia(videoObj, function(stream) {
+				videoDisplay.src = stream;
+				videoDisplay.play();
+			}, errBack);
+		} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+			navigator.webkitGetUserMedia(videoObj, function(stream){
+				videoDisplay.src = window.URL.createObjectURL(stream);
+				videoDisplay.play();
+			}, errBack);
+		}
+		else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+			navigator.mozGetUserMedia(videoObj, function(stream){
+				videoDisplay.src = window.URL.createObjectURL(stream);
+				videoDisplay.play();
+			}, errBack);
+		}
+	},
+
 	takePhoto: function() {
 		var instance = this;
 
 		var context = this.canvasNode.getContext('2d');
 
-		context.drawImage(this.videoDisplay, 0, 0, 320, 240);
+		context.drawImage(this.videoDisplay, 0, 0, 400, 300);
 
 		var imageData = this.canvasNode.toDataURL('image/jpeg');
 
@@ -78,6 +82,22 @@ module.exports = React.createClass({
 		this.setState({showVideo: false});
 	},
 
+	handlePhotoRetake: function() {
+		var instance = this;
+
+		var recruit = this.state.recruit;
+
+		recruit.profilePicture = null;
+
+		this.setState({
+			countdown: null,
+			recruit: recruit,
+			showVideo: true
+		}, function() {
+			instance.bindPhotoBooth();
+		});
+	},
+
 	handleSnapPhoto: function() {
 		var instance = this;
 
@@ -90,7 +110,7 @@ module.exports = React.createClass({
 				var newVal = instance.state.countdown - 1;
 
 				if (newVal === 0) {
-					newVal = 'Snap!'
+					newVal = <i className="fa fa-smile-o"></i>;
 
 					clearInterval(this);
 				}
@@ -106,7 +126,7 @@ module.exports = React.createClass({
 
 				instance.takePhoto();
 			},
-			3000
+			3500
 		);
 	},
 
@@ -121,29 +141,52 @@ module.exports = React.createClass({
 			);
 		}
 		else {
-			var videoDisplay = false;
+			var button = <button type="button" className="btn btn-primary" onClick={this.handlePhotoRetake}>Retake Photo</button>;
+			var videoDisplay;
+			var countdown;
 
 			if (this.state.showVideo) {
 				videoDisplay = (
 					<div>
-						<video ref="webcamDisplay" width="320" height="240" autoPlay={this.state.autoplay} src={recruit.profilePicture}></video>
-						<div className="photo-countdown" ref="photoCountdown">{this.state.countdown}</div>
+						<video ref="webcamDisplay" width="400" height="300" autoPlay={this.state.autoplay} src={recruit.profilePicture}></video>
+					</div>
+				);
+
+				button = <button type="button" className="btn btn-primary" onClick={this.handleSnapPhoto}>Snap Photo</button>
+			}
+
+			if (this.state.countdown) {
+				var cssClass = 'photo-countdown';
+
+				var number = this.state.countdown;
+
+				if (typeof this.state.countdown === 'object') {
+					cssClass += ' flash';
+					number = '';
+				}
+
+				countdown = (
+					<div className={cssClass}>
+						<span>{number}</span>
 					</div>
 				);
 			}
 
 			return (
 				<fieldset className="form-group photo-booth">
+					<h3>Take a picture!</h3>
+
 					<div className="video-container">
+						{countdown}
+
 						{videoDisplay}
-						<canvas ref="imageCanvas" hidden={this.state.showVideo} width="320" height="240"></canvas>
+						<canvas ref="imageCanvas" hidden={this.state.showVideo} width="400" height="300"></canvas>
 					</div>
 
-					<label htmlFor="profilePicture">Take a picture so we can remember you!</label>
 					<input ref="imageDataInput" type="hidden" name="profilePicture" />
 
-					<div className="">
-						<input ref="snapPhoto" className="btn btn-secondary" onClick={this.handleSnapPhoto} type="button" defaultValue="Snap Photo" />
+					<div className="photo-button">
+						{button}
 					</div>
 				</fieldset>
 			);
