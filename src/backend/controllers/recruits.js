@@ -8,27 +8,6 @@ var Utils = require('../utilities/utils');
 var OBJ_ERROR = {'success': false, 'message': 'Unknown Error Occured'};
 
 module.exports = function(router, io) {
-	router.route('/api/recruits/countries')
-		.get(
-			function(req, res) {
-				peopleModal.find(
-					{},
-					function(err,data) {
-						var countriesRepped = [];
-
-						data.forEach(function(item) {
-							var home = item.home;
-
-							if (home && home[2] && countriesRepped.indexOf(home[2]) === -1) {
-								countriesRepped.push(home[2]);
-							}
-						});
-
-						res.json(countriesRepped);
-					}
-				);
-			}
-		)
 	router.route('/api/recruits')
 		.get(
 			function(req, res) {

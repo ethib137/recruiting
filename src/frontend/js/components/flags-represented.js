@@ -4,6 +4,10 @@ var React = require('react');
 var Flag = require('react-flags');
 
 module.exports = React.createClass({
+	contextTypes: {
+		store: React.PropTypes.object
+	},
+
 	getInitialState: function() {
 		return {
 			countries: []
@@ -11,7 +15,33 @@ module.exports = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.getCountries();
+		var instance = this;
+
+		var store = this.context.store;
+
+		store.subscribe(function() {
+			var recruits = store.getState().recruits;
+
+			var countries = instance.processCountries(recruits);
+
+			instance.setState({
+				countries: countries
+			});
+		});
+	},
+
+	processCountries: function(data) {
+		var countriesRepped = [];
+
+		data.forEach(function(item) {
+			var home = item.home;
+
+			if (home && home[2] && countriesRepped.indexOf(home[2]) === -1) {
+				countriesRepped.push(home[2]);
+			}
+		});
+
+		return countriesRepped;
 	},
 
 	getCountries: function() {
