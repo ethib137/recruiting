@@ -19,7 +19,19 @@ path {
 	stroke: #233240;
 }
 
+.date-picker::-webkit-inner-spin-button,
+.date-picker::-webkit-calendar-picker-indicator {
+	display: none;
+}
+
+@keyframes dropdown {
+	0% {top: -75px;}
+	100% {top: 0;}
+}
+
 .drop-down-alert {
+	animation: dropdown;
+	animation-duration: 0.5s;
 	background-color: $red;
 	color: $white;
 	left: 0;

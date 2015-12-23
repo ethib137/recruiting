@@ -16,18 +16,6 @@ module.exports = React.createClass({
 
 	componentDidMount: function() {
 		var instance = this;
-
-		$(this.refs.gradTerm).datepicker(
-			{
-				onSelect: function(date) {
-					var recruit = instance.state.recruit;
-
-					recruit.gradTerm = date;
-
-					instance.setState({recruit: recruit});
-				}
-			}
-		);
 	},
 
 	componentDidUpdate: function() {
@@ -36,13 +24,21 @@ module.exports = React.createClass({
 		this.context.store.dispatch(setRecruit(recruit));
 	},
 
+	inputOnChange: function(event) {
+		var recruit = this.state.recruit;
+
+		recruit.gradTerm = this.refs.date.value;
+
+		this.setState({recruit: recruit});
+	},
+
 	render: function() {
 		var recruit = this.state.recruit;
 
 		return (
 			<fieldset className="row form-group">
 				<label htmlFor="gradTerm">Graduation Date</label>
-				<input ref="gradTerm" type="text" className="form-control" name="gradTerm" placeholder="May 1949" defaultValue={recruit.gradTerm} />
+				<input ref="date" type="date" className="form-control date-picker" name="gradTerm" onChange={this.inputOnChange} />
 			</fieldset>
 		);
 	}
