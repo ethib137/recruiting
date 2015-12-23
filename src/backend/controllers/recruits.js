@@ -204,7 +204,7 @@ module.exports = function(router, io) {
 										response = OBJ_ERROR;
 									}
 									else {
-										response = {'data': newData, 'success': true, 'message': 'Data is updated for '+params.id};
+										response = {'data': newData, 'success': true, 'message': 'Data is updated for ' + req.params.id};
 									}
 
 									res.json(response);
