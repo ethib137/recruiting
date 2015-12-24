@@ -1,12 +1,14 @@
 /** @jsx React.DOM */
 var React = require('react');
 
-var Map = require('./map');
 var AttendeeSnapshot = require('./attendee-snapshot');
 var FlagsRepresented = require('./flags-represented');
 var GenderBreakdown = require('./gender-breakdown');
-var StudyCategoryBreakdown = require('./category-of-study-breakdown');
+var GradTermBreakdown = require('./grad-term-breakdown');
+var Map = require('./map');
 var SkillsBreakdown = require('./skills-breakdown');
+var StudyCategoryBreakdown = require('./category-of-study-breakdown');
+
 
 module.exports = React.createClass({
 	render: function() {
@@ -38,8 +40,7 @@ module.exports = React.createClass({
 					</div>
 
 					<div className="col-sm-3">
-						<div className="statistics two">
-						</div>
+						<GradTermBreakdown />
 					</div>
 				</div>
 			</div>
