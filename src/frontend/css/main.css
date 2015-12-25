@@ -84,10 +84,24 @@ path {
 
 /* ---------- Admin ---------- */
 
-.card {
+.attendees-container {
+	display: flex;
+	flex-wrap: wrap;
+
+	.card {
+		@media (max-width: 600px) {
+			margin-right: 0;
+		}
+
+		flex: 1 0 320px;
+		margin-right: 100px;
+	}
+}
+
+/*.card {
 	display: inline-block;
 	width: 33%;
-}
+}*/
 
 .card-img-top {
 	width: 100%;

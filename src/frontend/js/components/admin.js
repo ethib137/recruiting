@@ -70,13 +70,16 @@ module.exports = React.createClass({
 
 					{search}
 				</nav>
-				{
-				instance.state.recruits.map(
-					function(recruit) {
-						return <Recruit key={recruit._id} recruit={recruit} showAll={instance.state.showAll} />;
+
+				<div className="attendees-container">
+					{
+						instance.state.recruits.map(
+							function(recruit) {
+								return <Recruit key={recruit._id} recruit={recruit} showAll={instance.state.showAll} />;
+							}
+						)
 					}
-				)
-				}
+				</div>
 			</div>
 		);
 	},
