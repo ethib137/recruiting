@@ -20,14 +20,21 @@ module.exports = {
 
 	getGeoPoints: function(location, callback) {
 		geocoder.geocode(location, function(err, res) {
-			if (!res.length) {
-				res = [{latitude: null, longitude: null}];
+			if (!err) {
+				if (!res.length) {
+					res = [{latitude: null, longitude: null}];
+				}
+
+				var latitude = res[0].latitude;
+				var longitude = res[0].longitude;
+
+				callback([latitude, longitude]);
 			}
+			else {
+				console.log(err);
 
-			var latitude = res[0].latitude;
-			var longitude = res[0].longitude;
-
-			callback([latitude, longitude]);
+				callback(null);
+			}
 		});
 	},
 

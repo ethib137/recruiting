@@ -133,7 +133,15 @@ module.exports = React.createClass({
 		svg.selectAll('.pin')
 			.data(instance.state.recruits).enter()
 			.append('circle')
-				.attr('class', 'map-user')
+				.attr('class', function() {
+					var className =  'map-user';
+
+					if (!d.geoPoints || !d.geoPoints.length) {
+						className = 'hide';
+					}
+
+					return className;
+				})
 				.attr('r', 1.5)
 				.attr('fill', '#FFFFFF')
 				.attr('opacity', '0.7')
@@ -141,7 +149,11 @@ module.exports = React.createClass({
 					return 'people' + d._id;
 				})
 				.attr('transform', function(d) {
-					var arr = [d.geoPoints[1], d.geoPoints[0]];
+					var arr = [0, 0];
+
+					if (d.geoPoints && d.geoPoints.length) {
+						arr = [d.geoPoints[1], d.geoPoints[0]];
+					}
 
 					return 'translate(' + projection(arr) + ')';
 				});
