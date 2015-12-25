@@ -103,6 +103,12 @@ path {
 	}
 }
 
+.breakdown-title {
+	font-size: 18px;
+	font-weight: 600;
+	padding-bottom: 8px;
+}
+
 .flag-container {
 	.flag {
 		display: inline-block;
@@ -143,6 +149,7 @@ path {
 			}
 		}
 	}
+
 
 	&.flags {
 		background-color: $green;
@@ -188,10 +195,15 @@ path {
 
 	&.grad-term-breakdown {
 		background-color: $purple;
-	}
+	};
 
 	&.skills-breakdown {
 		background-color: $blue;
+	}
+
+	.percent {
+		font-size: 18px;
+		padding-bottom: 12px;
 	}
 }
 

@@ -69,7 +69,7 @@ module.exports = React.createClass({
 
 		return (
 			<div className="statistics study-breakdown">
-				<div>Study Breakdown:</div>
+				<div className="breakdown-title">People are studying:</div>
 
 				<div ref="attendeeBreakDown">
 					{

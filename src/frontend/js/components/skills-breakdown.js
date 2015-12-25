@@ -133,7 +133,7 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 			<div className="statistics skills-breakdown">
-				<div>Skills Breakdown:</div>
+				<div className="breakdown-title">Most Popular Skills:</div>
 
 				<div ref="attendeeBreakDown"></div>
 			</div>

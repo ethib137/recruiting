@@ -105,12 +105,12 @@ module.exports = React.createClass({
 
 		return (
 			<div className="statistics gender-breakdown">
-				<div>Gender Breakdown:</div>
+				<div className="breakdown-title">Gender Breakdown:</div>
 
 				<div ref="attendeeBreakDown"></div>
 				<div>
-					<div className="male-percent">Male: {menPercent}%</div>
-					<div className="female-percent">Female: {womenPercent}%</div>
+					<div className="male-percent percent">Male: {menPercent}%</div>
+					<div className="female-percent percent">Female: {womenPercent}%</div>
 				</div>
 			</div>
 		);

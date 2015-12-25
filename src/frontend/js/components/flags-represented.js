@@ -68,7 +68,7 @@ module.exports = React.createClass({
 
 		return (
 			<div className="statistics flags">
-				<div>Countries Represented:</div>
+				<div className="breakdown-title">Countries Represented:</div>
 				<div className="flag-container">
 					{
 						instance.state.countries.map(

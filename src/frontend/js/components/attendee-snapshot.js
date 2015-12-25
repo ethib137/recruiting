@@ -115,7 +115,7 @@ module.exports = React.createClass({
 
 		return (
 			<div className="snapshot statistics">
-				<div>Attendee Snapshot:</div>
+				<div className="breakdown-title">Attendee Snapshot:</div>
 
 				<div className="img-container">
 					<img src={activeRecruit.profilePicture} />

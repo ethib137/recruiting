@@ -77,7 +77,7 @@ module.exports = React.createClass({
 
 		return (
 			<div className="statistics grad-term-breakdown">
-				<div>Graduation Breakdown:</div>
+				<div className="breakdown-title">Percent of Attendees Graduating:</div>
 
 				<div ref="attendeeBreakDown">
 					{
@@ -86,7 +86,7 @@ module.exports = React.createClass({
 							var message = key + ': ' +Math.round(percent) + '%';
 
 							return (
-								<div key={key}>
+								<div className="percent" key={key}>
 									{message}
 								</div>
 							);
