@@ -66,7 +66,9 @@ module.exports = React.createClass({
 	componentDidUpdate: function() {
 		var instance = this;
 
-		this.renderUserPins(instance._svg, instance._projection);
+		setTimeout(function() {
+			instance.renderUserPins(instance._svg, instance._projection);
+		}, 1000);
 	},
 
 	renderD3: function() {

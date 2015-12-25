@@ -33,7 +33,7 @@ module.exports = React.createClass({
 			else {
 				setTimeout(function() {
 					instance.cycleRecruits();
-				}, 1000);
+				}, 1500);
 			}
 		});
 	},
