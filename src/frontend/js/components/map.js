@@ -96,20 +96,19 @@ module.exports = React.createClass({
 
 		svg.selectAll('.pin')
 			.data(LiferayOffices).enter()
-			.append('text')
+				.append("image")
+				.attr("xlink:href","/documents/office-icon.svg")
 				.attr('class', 'liferay-office')
-				.attr('font-size', fontSize)
-				.text('\uf276')
 				.attr(
 					'transform',
 					function(d) {
-					d = [d[1], d[0]];
+						d = [d[1], d[0]];
 
-					var xy = projection(d);
+						var xy = projection(d);
 
-					xy = [xy[0] - (fontSize / 4), xy[1]]
+						xy = [xy[0] - (fontSize / 4), xy[1]]
 
-					return 'translate(' + xy + ')';
+						return 'translate(' + xy + ')';
 					}
 				);
 	},

@@ -112,10 +112,8 @@ path {
 }
 
 .liferay-office {
-	fill: rgba($black, 0.7);
-	stroke: #233240;
-	stroke-width: 0.5px;
-	font-family: 'FontAwesome';
+	height: 10px;
+	width: 10px;
 }
 
 .statistics {
