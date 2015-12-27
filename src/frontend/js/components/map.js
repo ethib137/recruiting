@@ -133,10 +133,10 @@ module.exports = React.createClass({
 		svg.selectAll('.pin')
 			.data(instance.state.recruits).enter()
 			.append('circle')
-				.attr('class', function() {
+				.attr('class', function(d) {
 					var className =  'map-user';
 
-					if (!d.geoPoints || !d.geoPoints.length) {
+					if (d && (!d.geoPoints || !d.geoPoints.length)) {
 						className = 'hide';
 					}
 
