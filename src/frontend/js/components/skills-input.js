@@ -143,7 +143,7 @@ module.exports = React.createClass({
 			<fieldset className="row form-group">
 				<label htmlFor="skillsInput">Know any technical skills?</label>
 
-				<div className="form-control">
+				<div className="form-control combo-box">
 				{
 					recruit.skills.map(
 						function(skill) {

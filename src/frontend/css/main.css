@@ -327,9 +327,14 @@ h3 {
 	margin-top: 20px;
 }
 
+.combo-box {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .skills-input, .languages-input {
 	border-width: 0;
-	width: auto;
+	flex-basis: 220px;
 
 	&:focus {
 		outline-width: 0;
@@ -444,5 +449,5 @@ h3 {
 
 	.success-image {
 		height: 200px;
-	}	
+	}
 }

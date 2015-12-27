@@ -85,7 +85,7 @@ module.exports = React.createClass({
 			<fieldset className="row form-group">
 				<label htmlFor="languagesInput">What languages do you speak?</label>
 
-				<div className="form-control">
+				<div className="form-control combo-box">
 				{
 					recruit.spokenLanguages.map(
 						function(language) {
