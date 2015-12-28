@@ -13,7 +13,7 @@ module.exports = React.createClass({
 			function() {
 				window.location.href = window.location.origin + '/#/form';
 			},
-			5000
+			8000
 		);
 	},
 
@@ -28,7 +28,7 @@ module.exports = React.createClass({
 		return (
 			<div className="success-page">
 				<div className="message row">
-					Thanks for participating! 
+					Thanks for participating!
 					<br />
 					{message}
 				</div>
