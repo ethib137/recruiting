@@ -175,116 +175,114 @@ module.exports = React.createClass({
 			<div className="container-fluid form-page">
 				{alert}
 				{adminToolbar}
-				<form action="" onSubmit={this.onSubmit}>
-					<div className="row">
-						<div className="col-md-4">
-							<VideoInput />
-						</div>
+				<div className="row">
+					<div className="col-md-4">
+						<VideoInput />
+					</div>
 
-						<div className="col-md-8">
-							<h3 className="personal">Personal</h3>
+					<div className="col-md-8">
+						<h3 className="personal">Personal</h3>
 
-							<div className="form-card personal">
-								<div className="row">
-									<div className="col-md-4">
-										<fieldset className="row form-group">
-											<label htmlFor="firstName">First Name</label>
-											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="firstName" onChange={this.onInputChange} placeholder="Jim" defaultValue={recruit.firstName} />
-										</fieldset>
-									</div>
-									<div className="col-md-4">
-										<fieldset className="row form-group">
-											<label htmlFor="lastName">Last Name</label>
-											<small className="text-muted">(Required)</small>
-											<input type="text" className="form-control" name="lastName" onChange={this.onInputChange} placeholder="Elliot" defaultValue={recruit.lastName} />
-										</fieldset>
-									</div>
-
-									<fieldset className="col-md-4 form-group">
-										<label htmlFor="isMale">Gender</label>
-										<div className="radio">
-											<label className="col-md-6">
-												<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale1" defaultChecked={recruit.isMale} value="true" />
-												Male
-											</label>
-											<label className="col-md-6">
-												<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale2" defaultChecked={!recruit.isMale} value="false" />
-												Female
-											</label>
-										</div>
+						<div className="form-card personal">
+							<div className="row">
+								<div className="col-md-4">
+									<fieldset className="row form-group">
+										<label htmlFor="firstName">First Name</label>
+										<small className="text-muted">(Required)</small>
+										<input type="text" className="form-control" name="firstName" onChange={this.onInputChange} placeholder="Jim" defaultValue={recruit.firstName} />
+									</fieldset>
+								</div>
+								<div className="col-md-4">
+									<fieldset className="row form-group">
+										<label htmlFor="lastName">Last Name</label>
+										<small className="text-muted">(Required)</small>
+										<input type="text" className="form-control" name="lastName" onChange={this.onInputChange} placeholder="Elliot" defaultValue={recruit.lastName} />
 									</fieldset>
 								</div>
 
-								<EmailInput />
+								<fieldset className="col-md-4 form-group">
+									<label htmlFor="isMale">Gender</label>
+									<div className="radio">
+										<label className="col-md-6">
+											<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale1" defaultChecked={recruit.isMale} value="true" />
+											Male
+										</label>
+										<label className="col-md-6">
+											<input type="radio" name="isMale" onChange={this.onInputChange} id="isMale2" defaultChecked={!recruit.isMale} value="false" />
+											Female
+										</label>
+									</div>
+								</fieldset>
+							</div>
 
-								<div className="row">
-									<div className="col-md-6">
-										<HomeInput />
-									</div>
-									<div className="col-md-6">
-										<MissionsInput />
-									</div>
+							<EmailInput />
+
+							<div className="row">
+								<div className="col-md-6">
+									<HomeInput />
+								</div>
+								<div className="col-md-6">
+									<MissionsInput />
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<div className="row secondary-info">
-						<div className="col-md-4">
-							<h3 className="education">Education</h3>
+				<div className="row secondary-info">
+					<div className="col-md-4">
+						<h3 className="education">Education</h3>
 
-							<div className="form-card education">
-								<fieldset className="row form-group">
-									<label htmlFor="school">School</label><small className="text-muted">(Only if applicable)</small>
-									<input type="text" className="form-control" name="school" onChange={this.onInputChange} placeholder="Wheaton College" defaultValue={recruit.school} />
-								</fieldset>
+						<div className="form-card education">
+							<fieldset className="row form-group">
+								<label htmlFor="school">School</label><small className="text-muted">(Only if applicable)</small>
+								<input type="text" className="form-control" name="school" onChange={this.onInputChange} placeholder="Wheaton College" defaultValue={recruit.school} />
+							</fieldset>
 
-								<FieldOfStudyInput />
+							<FieldOfStudyInput />
 
-								<GradTermInput />
-							</div>
+							<GradTermInput />
+						</div>
+					</div>
+
+					<div className="col-md-4">
+						<h3 className="skills-group">Skills</h3>
+
+						<div className="form-card skills-group">
+							<SkillsInput />
+							<LanguagesInput />
 						</div>
 
-						<div className="col-md-4">
-							<h3 className="skills-group">Skills</h3>
+						<fieldset className="row form-group contact-me">
+							<label className="checkbox-inline">
+								<input type="checkbox" className="form-control" name="contactMe" onChange={this.onInputChange} defaultChecked={recruit.contactMe} defaultValue={recruit.contactMe} />
+								Contact me about a job.
+							</label>
+						</fieldset>
+					</div>
 
-							<div className="form-card skills-group">
-								<SkillsInput />
-								<LanguagesInput />
-							</div>
+					<div className="col-md-4">
+						<h3 className="elsewhere">Elsewhere</h3>
 
-							<fieldset className="row form-group contact-me">
-								<label className="checkbox-inline">
-									<input type="checkbox" className="form-control" name="contactMe" onChange={this.onInputChange} defaultChecked={recruit.contactMe} defaultValue={recruit.contactMe} />
-									Contact me about a job.
-								</label>
+						<div className="form-card elsewhere">
+							<fieldset className="row form-group">
+								<label htmlFor="githubUsername">Github Username</label>
+								<input type="text" className="form-control" name="githubUsername" onChange={this.onInputChange} placeholder="https://github.com/Corge" defaultValue={recruit.githubUsername} />
+							</fieldset>
+
+							<fieldset className="row form-group">
+								<label htmlFor="portfolioSite">Portfolio Site</label>
+								<input type="text" className="form-control" name="portfolioSite" onChange={this.onInputChange} placeholder="https://myPortfolio.com/" defaultValue={recruit.portfolioSite} />
 							</fieldset>
 						</div>
-
-						<div className="col-md-4">
-							<h3 className="elsewhere">Elsewhere</h3>
-
-							<div className="form-card elsewhere">
-								<fieldset className="row form-group">
-									<label htmlFor="githubUsername">Github Username</label>
-									<input type="text" className="form-control" name="githubUsername" onChange={this.onInputChange} placeholder="https://github.com/Corge" defaultValue={recruit.githubUsername} />
-								</fieldset>
-
-								<fieldset className="row form-group">
-									<label htmlFor="portfolioSite">Portfolio Site</label>
-									<input type="text" className="form-control" name="portfolioSite" onChange={this.onInputChange} placeholder="https://myPortfolio.com/" defaultValue={recruit.portfolioSite} />
-								</fieldset>
-							</div>
-						</div>
 					</div>
+				</div>
 
-					{adminInputs}
+				{adminInputs}
 
-					<div className="btn-holder row">
-						<button className="btn btn-primary btn-lg" type="submit">Submit</button>
-					</div>
-				</form>
+				<div className="btn-holder row">
+					<button onClick={this.onSubmit} className="btn btn-primary btn-lg" type="submit">Submit</button>
+				</div>
 			</div>
 		);
 	}
