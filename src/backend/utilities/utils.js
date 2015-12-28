@@ -1,5 +1,4 @@
 var fs = require('fs');
-var geocoder = require('node-geocoder')('google', 'http', null);
 var mkdirp = require('mkdirp');
 var path = require('path');
 
@@ -16,26 +15,6 @@ module.exports = {
 		response.data = new Buffer(matches[2], 'base64');
 
 		return response;
-	},
-
-	getGeoPoints: function(location, callback) {
-		geocoder.geocode(location, function(err, res) {
-			if (!err) {
-				if (!res.length) {
-					res = [{latitude: null, longitude: null}];
-				}
-
-				var latitude = res[0].latitude;
-				var longitude = res[0].longitude;
-
-				callback([latitude, longitude]);
-			}
-			else {
-				console.log(err);
-
-				callback(null);
-			}
-		});
 	},
 
 	writeImage: function(imageBuffer, fileName, callback) {

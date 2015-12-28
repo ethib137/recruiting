@@ -88,12 +88,9 @@ module.exports = function(router, io) {
 													var city = data[Math.floor(Math.random()*data.length)];
 
 													db.missionsLocation = city.full;
-
-													Utils.getGeoPoints(city.full, function(event) {
-														db.geoPoints = event;
+													db.geoPoints = [city.latitude, city.longitude];
 
 														callback(null, 2);
-													});
 												}
 											);
 										}

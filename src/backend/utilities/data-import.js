@@ -29,10 +29,12 @@ module.exports = function() {
 
 			citiesJson.forEach(function(item, index) {
 				var data = {
-					country: item.CountryCode,
-					full: item.City + ', ' + item.State + ', ' + item.CountryCode,
-					label: item.City,
-					state: item.State
+					country: item['country code'],
+					full: item.name + ', ' + item.state + ', ' + item['country code'],
+					label: item.name,
+					latitude: item.latitude,
+					longitude: item.longitude,
+					state: item.state
 				};
 
 				cityData.push(data);

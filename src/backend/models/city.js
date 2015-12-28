@@ -6,6 +6,8 @@ var city = {
 	'country': String,
 	'full': String,
 	'label': String,
+	'latitude': Number,
+	'longitude': Number,
 	'state': String
 };
 
