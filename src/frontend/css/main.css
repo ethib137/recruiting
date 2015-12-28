@@ -172,7 +172,7 @@ path {
 	}
 
 	&.gender-breakdown {
-		background-color: $red;
+		background-color: $blue;
 		display: flex;
 		flex-wrap: wrap;
 
@@ -212,7 +212,7 @@ path {
 	};
 
 	&.skills-breakdown {
-		background-color: $blue;
+		background-color: $red;
 	}
 
 	.percent {

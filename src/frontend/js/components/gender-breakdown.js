@@ -55,7 +55,7 @@ module.exports = React.createClass({
 				percent: Math.round(this.state.men / total * 100)
 			},
 			{
-				color: '#FF69B4',
+				color: '#F76295',
 				count: this.state.women,
 				percent: Math.round(this.state.women / total * 100)
 			}
